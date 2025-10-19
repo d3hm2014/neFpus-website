@@ -46,6 +46,42 @@
 
     </div>
   </header>
+<header class="sticky top-0 z-50 bg-white/90 backdrop-filter backdrop-blur border-b border-gray-100">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- شعار NEFPUS (واحد فقط) -->
+    <a href="#top" aria-label="NEFPUS Home" class="flex items-center gap-3">
+      <img src="https://i.ibb.co/p6Wzhjh2/logo.png" alt="NEFPUS" class="h-14 w-auto">
+      <div class="hidden sm:block leading-tight">
+        <p class="font-bold text-lg" style="color:var(--brand-blue)">NEFPUS</p>
+        <p class="text-xs text-gray-500">National Establishment for Professional Uniform Supply</p>
+        <p class="text-xs text-gray-600 mt-1">المؤسسة الوطنية لتوريد وتجهيز الزي المهني</p>
+      </div>
+    </a>
+
+    <!-- قائمة التنقل -->
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="#about" style="color:var(--brand-blue)">من نحن</a>
+      <a href="#services" style="color:var(--brand-blue)">الخدمات</a>
+      <a href="#gallery" style="color:var(--brand-blue)">القطاعات</a>
+      <a href="#clients" style="color:var(--brand-blue)">عملاؤنا</a>
+      <a href="#contact" class="px-4 py-2 rounded-lg btn-primary">اطلب عرض سعر</a>
+    </nav>
+
+    <!-- زر قائمة الجوال -->
+    <button onclick="document.getElementById('mnav').classList.toggle('hidden')" class="md:hidden px-3 py-2 rounded border btn-outline">القائمة</button>
+  </div>
+
+  <!-- قائمة الجوال -->
+  <div id="mnav" class="md:hidden hidden border-t">
+    <div class="px-4 py-3 flex flex-col gap-3 text-sm">
+      <a href="#about" onclick="mhide()" class="text-blue-900">من نحن</a>
+      <a href="#services" onclick="mhide()" class="text-blue-900">الخدمات</a>
+      <a href="#gallery" onclick="mhide()" class="text-blue-900">القطاعات</a>
+      <a href="#clients" onclick="mhide()" class="text-blue-900">عملاؤنا</a>
+      <a href="#contact" onclick="mhide()" class="px-4 py-2 rounded-lg text-center btn-primary">اطلب عرض سعر</a>
+    </div>
+  </div>
+</header>
 
   <!-- Hero -->
   <section class="brand-gradient text-white">
