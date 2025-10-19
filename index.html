@@ -150,18 +150,48 @@
   </section>
 
   <!-- Clients -->
-  <section id="clients" class="py-16 md:py-20">
-    <div class="container mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-bold mb-10 text-center" style="color:var(--brand-blue)">عملاؤنا</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-center">
-        <img src="assets/clients/mashreqia.webp" alt="مدارس المشرقية الأهلية" class="client-logo" loading="lazy">
-        <img src="assets/clients/alsad.jpg" alt="ALSAD" class="client-logo" loading="lazy">
-        <img src="assets/clients/fakeeh.png" alt="مستشفى د. سليمان فقيه" class="client-logo" loading="lazy">
-        <img src="assets/clients/saudi_fpp.png" alt="الشركة السعودية للمنتجات البلاستيكية SAUDI FPP" class="client-logo" loading="lazy">
-        <img src="assets/clients/sif.png" alt="مصنع السعودية للصناعة SIF" class="client-logo" loading="lazy">
-        <img src="assets/clients/nupco.png" alt="نوبكو NUPCO" class="client-logo" loading="lazy">
+  <section id="clients" class="py-16 md:py-20 bg-gray-50">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold mb-10" style="color:var(--brand-blue)">
+      عملاؤنا
+    </h2>
+
+    <div class="relative overflow-hidden">
+      <div class="flex animate-scroll gap-8 items-center justify-start">
+        <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo">
+        <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo">
+        <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo">
+        <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo">
+        <img src="https://i.ibb.co/TDgt2D9c/client5.png" alt="عميل 5" class="client-logo">
+        <!-- تكرار إضافي لضمان السلاسة -->
+        <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1 مكرر" class="client-logo">
+        <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2 مكرر" class="client-logo">
+        <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3 مكرر" class="client-logo">
       </div>
     </div>
+  </div>
+</section>
+
+<style>
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll {
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+.client-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  transition: transform .3s;
+}
+.client-logo:hover {
+  transform: scale(1.05);
+}
+</style>
+
   </section>
 
   <!-- Contact + Embedded RFQ -->
