@@ -158,37 +158,36 @@
     </div>
   </section>
 
-  <!-- Clients -->
-  <section id="clients" class="py-16 md:py-20 bg-gray-50">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-2xl md:text-3xl font-bold mb-10" style="color:var(--brand-blue)">
-      عملاؤنا
-    </h2>
-
+ <!-- Clients -->
+<section id="clients" class="py-16 md:py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold mb-10 text-center" style="color:var(--brand-blue)">عملاؤنا</h2>
     <div class="relative overflow-hidden">
-      <div class="flex animate-scroll gap-8 items-center justify-start">
-        <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo">
-        <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo">
-        <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo">
-        <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo">
-        <img src="https://i.ibb.co/TDgt2D9c/client5.png" alt="عميل 5" class="client-logo">
-        <!-- تكرار إضافي لضمان السلاسة -->
-        <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1 مكرر" class="client-logo">
-        <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2 مكرر" class="client-logo">
-        <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3 مكرر" class="client-logo">
+      <div class="flex animate-scroll-custom items-center">
+        <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo" loading="lazy">
+        <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo" loading="lazy">
+        <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo" loading="lazy">
+        <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo" loading="lazy">
+        <img src="https://i.ibb.co/TDgt2D9c/client5.png" alt="عميل 5" class="client-logo" loading="lazy">
+        <!-- تكرار إضافي لانسيابية الشريط -->
+        <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1 مكرر" class="client-logo" loading="lazy">
+        <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2 مكرر" class="client-logo" loading="lazy">
+        <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3 مكرر" class="client-logo" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
 <style>
-@keyframes scroll {
+@keyframes scroll-custom {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-.animate-scroll {
+.animate-scroll-custom {
+  display: flex;
+  gap: 160px; /* 👈 المسافة بين الشعارات (كانت 120px الآن صارت شعارين تقريبًا) */
   width: max-content;
-  animation: scroll 20s linear infinite;
+  animation: scroll-custom 25s linear infinite;
 }
 .client-logo {
   height: 80px;
@@ -197,8 +196,10 @@
   transition: transform .3s;
 }
 .client-logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
+</style>
+
 </style>
 
   </section>
