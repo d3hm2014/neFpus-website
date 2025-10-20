@@ -6,6 +6,7 @@
     <title>NEFPUS | المؤسسة الوطنية لتوريد وتجهيز الزي المهني</title>
     <meta name="description" content="NEFPUS — حلول متكاملة لتوريد وتصنيع وتخصيص الزي المهني للمستشفيات والمدارس والمصانع والقطاعات المختلفة داخل المملكة. نلتزم بالتوريد في المواعيد المحددة." />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -148,7 +149,7 @@
             </div>
         </a>
 
-        <nav class="hidden md:flex items-center gap-6 text-sm">
+        <nav class="hidden lg:flex items-center gap-6 text-sm">
             <a href="#about" style="color:var(--brand-blue)">من نحن</a>
             <a href="#services" style="color:var(--brand-blue)">الخدمات</a>
             <a href="#gallery" style="color:var(--brand-blue)">القطاعات</a>
@@ -157,10 +158,10 @@
             <a href="#contact" class="px-4 py-2 rounded-lg btn-primary">اطلب عرض سعر</a>
         </nav>
 
-        <button id="mobile-menu-btn" class="md:hidden px-3 py-2 rounded border btn-outline">القائمة</button>
+        <button id="mobile-menu-btn" class="lg:hidden px-3 py-2 rounded border btn-outline">القائمة</button>
     </div>
 
-    <div id="mnav" class="md:hidden hidden border-t">
+    <div id="mnav" class="lg:hidden hidden border-t">
         <div class="px-4 py-3 flex flex-col gap-3 text-sm mobile-nav-links">
             <a href="#about" class="text-blue-900">من نحن</a>
             <a href="#services" class="text-blue-900">الخدمات</a>
@@ -404,32 +405,32 @@
                 يرجى ملء النموذج أدناه بدقة لتمكين فريق المبيعات من تجهيز عرض سعر مُفصَّل ومناسب لاحتياجات منشأتكم.
             </p>
 
-            <form action="#" method="POST" class="space-y-6">
+            <form action="https://formspree.io/f/xanpkdej" method="POST" class="space-y-6">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <label for="company_name" class="block text-sm font-medium text-gray-700">اسم الشركة/المنشأة <span class="text-red-500">*</span></label>
-                        <input type="text" id="company_name" name="company_name" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                        <input type="text" id="company_name" name="اسم_الشركة" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
                         <label for="contact_person" class="block text-sm font-medium text-gray-700">اسم الشخص المسؤول <span class="text-red-500">*</span></label>
-                        <input type="text" id="contact_person" name="contact_person" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                        <input type="text" id="contact_person" name="اسم_المسؤول" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <label for="phone" class="block text-sm font-medium text-gray-700">رقم الهاتف/الواتساب <span class="text-red-500">*</span></label>
-                        <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="مثال: +9665xxxxxxxx">
+                        <input type="tel" id="phone" name="الهاتف" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="مثال: +9665xxxxxxxx">
                     </div>
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">البريد الإلكتروني <span class="text-red-500">*</span></label>
-                        <input type="email" id="email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="example@company.com">
+                        <input type="email" id="email" name="البريد_الإلكتروني" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="example@company.com">
                     </div>
                 </div>
 
                 <div>
                     <label for="sector" class="block text-sm font-medium text-gray-700">القطاع/نوع النشاط <span class="text-red-500">*</span></label>
-                    <select id="sector" name="sector" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 bg-white appearance-none">
+                    <select id="sector" name="القطاع" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 bg-white appearance-none">
                         <option value="" disabled selected>اختر قطاع نشاط منشأتكم</option>
                         <option value="مستشفيات وطب">مستشفيات ومراكز طبية</option>
                         <option value="مدارس وتعليم">مدارس ومؤسسات تعليمية</option>
@@ -441,23 +442,23 @@
 
                 <div>
                     <label for="uniform_type" class="block text-sm font-medium text-gray-700">نوع الزي المطلوب (سكراب، بدلة، قميص... إلخ) <span class="text-red-500">*</span></label>
-                    <input type="text" id="uniform_type" name="uniform_type" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="مثال: سكراب طبي، بدلة عمال، زي مدرسي شتوي">
+                    <input type="text" id="uniform_type" name="نوع_الزي_المطلوب" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="مثال: سكراب طبي، بدلة عمال، زي مدرسي شتوي">
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-6">
                      <div>
                         <label for="quantity" class="block text-sm font-medium text-gray-700">الكمية التقديرية (بالقطعة) <span class="text-red-500">*</span></label>
-                        <input type="number" id="quantity" name="quantity" required min="10" placeholder="يُفضل أن لا تقل عن 50 قطعة" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                        <input type="number" id="quantity" name="الكمية_التقديرية" required min="10" placeholder="يُفضل أن لا تقل عن 50 قطعة" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
                         <label for="delivery_date" class="block text-sm font-medium text-gray-700">تاريخ التسليم المتوقع (إذا توفر)</label>
-                        <input type="date" id="delivery_date" name="delivery_date" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                        <input type="date" id="delivery_date" name="تاريخ_التسليم_المتوقع" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                 </div>
 
                 <div>
                     <label for="details" class="block text-sm font-medium text-gray-700">تفاصيل إضافية عن الطلب (الهوية، الأقمشة، الطباعة)</label>
-                    <textarea id="details" name="details" rows="4" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="اذكر أي تفاصيل إضافية مثل متطلبات الألوان، خامة القماش، أو الحاجة للتطريز/الطباعة."></textarea>
+                    <textarea id="details" name="تفاصيل_إضافية" rows="4" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="اذكر أي تفاصيل إضافية مثل متطلبات الألوان، خامة القماش، أو الحاجة للتطريز/الطباعة."></textarea>
                 </div>
 
                 <div class="pt-4">
