@@ -1,319 +1,331 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NEFPUS | المؤسسة الوطنية لتوريد وتجهيز الزي المهني</title>
-  <meta name="description" content="NEFPUS — حلول متكاملة لتوريد وتصنيع وتخصيص الزي المهني للمستشفيات والمدارس والمصانع والقطاعات المختلفة داخل المملكة." />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NEFPUS | المؤسسة الوطنية لتوريد وتجهيز الزي المهني</title>
+    <meta name="description" content="NEFPUS — حلول متكاملة لتوريد وتصنيع وتخصيص الزي المهني للمستشفيات والمدارس والمصانع والقطاعات المختلفة داخل المملكة." />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-    <meta property="og:title" content="NEFPUS | المؤسسة الوطنية لتوريد وتجهيز الزي المهني">
-  <meta property="og:description" content="توريد وتصنيع وتخصيص الزي المهني — مصانع، مدارس، مستشفيات.">
-  <meta property="og:type" content="website">
+    <meta property="og:title" content="NEFPUS | المؤسسة الوطنية لتوريد وتجهيز الزي المهني">
+    <meta property="og:description" content="توريد وتصنيع وتخصيص الزي المهني — مصانع، مدارس، مستشفيات.">
+    <meta property="og:type" content="website">
 
-  <style>
-    :root{--brand-blue:#0B3C6E;--brand-accent:#3D6EA8;--brand-gray:#4A4A4A}
-    .brand-gradient{background:linear-gradient(135deg,var(--brand-blue),var(--brand-accent))}
-    html{scroll-behavior:smooth}
-    .container{max-width:1100px}
+    <style>
+        :root{--brand-blue:#0B3C6E;--brand-accent:#3D6EA8;--brand-gray:#4A4A4A}
+        .brand-gradient{background:linear-gradient(135deg,var(--brand-blue),var(--brand-accent))}
+        html{scroll-behavior:smooth}
+        .container{max-width:1100px}
 
-    /* أزرار */
-    .btn-primary{background:var(--brand-blue);color:#fff}
-    .btn-outline{border:1px solid var(--brand-blue);color:var(--brand-blue)}
+        /* أزرار */
+        .btn-primary{background:var(--brand-blue);color:#fff}
+        .btn-outline{border:1px solid var(--brand-blue);color:var(--brand-blue)}
 
-    /* تعريف عام للشعارات - تم تقليل الحد الأقصى للارتفاع */
-    .client-logo{height:clamp(80px, 12vw, 120px); width:auto; object-fit:contain; filter:grayscale(0.1); flex:0 0 auto; max-width: 100%; transition:transform .25s ease, filter .25s ease, opacity .25s ease; opacity:.95;}
-    .client-logo:hover{transform:scale(1.08); filter:grayscale(0); opacity:1;}
+        /* أنماط الكاروسيل (تم استعادتها هنا لضمان التنظيم) */
+        .carousel-root{position:relative; overflow:hidden; max-width: 1400px;}
+        .carousel-track{ display:flex; transition:transform .6s ease; }
+        .carousel-slide{
+            min-width:100%; box-sizing:border-box;
+            display:flex; align-items:center; justify-content:center;
+            gap: clamp(64px, 8vw, 180px); /* فراغ مرن */
+            padding: 10px 16px; flex-wrap: nowrap;
+        }
+        
+        /* تعريف عام للشعارات - تم ضبط الارتفاع لضمان عدم التضخم */
+        .client-logo{
+            height: clamp(80px, 12vw, 120px); /* ارتفاع مناسب للشعارات */
+            width:auto; object-fit:contain;
+            filter:grayscale(.1);
+            transition:transform .25s ease, filter .25s ease, opacity .25s ease;
+            opacity:.95; flex:0 0 auto; max-width: 100%;
+        }
+        .client-logo:hover{ transform:scale(1.08); filter:grayscale(0); opacity:1; }
 
-    /* أنماط الكاروسيل - تم دمجها قدر الإمكان */
-    .carousel-root{position:relative; overflow:hidden; max-width: 1400px;}
-    .carousel-track{ display:flex; transition:transform .6s ease; }
-    .carousel-slide{
-      min-width:100%; box-sizing:border-box;
-      display:flex; align-items:center; justify-content:center;
-      gap: clamp(64px, 8vw, 180px); /* فراغ مرن */
-      padding: 10px 16px; flex-wrap: nowrap;
-    }
+        /* أنماط النقاط */
+        .dot{
+            width:12px;height:12px;border-radius:999px;
+            border:1px solid #1E3A8A;background:#fff;cursor:pointer;opacity:.6;
+        }
+        .dot.active{ background:#1E3A8A; opacity:1; }
 
-    /* أنماط النقاط */
-    .dot{
-      width:12px;height:12px;border-radius:999px;
-      border:1px solid #1E3A8A;background:#fff;cursor:pointer;opacity:.6;
-    }
-    .dot.active{ background:#1E3A8A; opacity:1; }
-  </style>
+        /* إخفاء الشعار الثالث على الشاشات المتوسطة/الصغيرة (Tailwind equivalent for hidden on md and below) */
+        @media (max-width: 768px){
+            .hide-md{ display:none !important; }
+        }
+    </style>
 </head>
 
 <body class="bg-white text-gray-800" id="top">
 
 <header class="sticky top-0 z-50 bg-white/90 backdrop-filter backdrop-blur border-b border-gray-100">
-  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="#top" aria-label="NEFPUS Home" class="flex items-center gap-3">
-      <img src="https://i.ibb.co/p6Wzhjh2/logo.png" alt="NEFPUS" class="h-14 w-auto">
-      <div class="hidden sm:block leading-tight">
-        <p class="font-bold text-lg" style="color:var(--brand-blue)">NEFPUS</p>
-        <p class="text-xs text-gray-500">National Establishment for Professional Uniform Supply</p>
-        <p class="text-xs text-gray-600 mt-1">المؤسسة الوطنية لتوريد وتجهيز الزي المهني</p>
-      </div>
-    </a>
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="#top" aria-label="NEFPUS Home" class="flex items-center gap-3">
+            <img src="https://i.ibb.co/p6Wzhjh2/logo.png" alt="NEFPUS" class="h-14 w-auto">
+            <div class="hidden sm:block leading-tight">
+                <p class="font-bold text-lg" style="color:var(--brand-blue)">NEFPUS</p>
+                <p class="text-xs text-gray-500">National Establishment for Professional Uniform Supply</p>
+                <p class="text-xs text-gray-600 mt-1">المؤسسة الوطنية لتوريد وتجهيز الزي المهني</p>
+            </div>
+        </a>
 
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-      <a href="#about" style="color:var(--brand-blue)">من نحن</a>
-      <a href="#services" style="color:var(--brand-blue)">الخدمات</a>
-      <a href="#gallery" style="color:var(--brand-blue)">القطاعات</a>
-      <a href="#clients" style="color:var(--brand-blue)">عملاؤنا</a>
-      <a href="#contact" class="px-4 py-2 rounded-lg btn-primary">اطلب عرض سعر</a>
-    </nav>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="#about" style="color:var(--brand-blue)">من نحن</a>
+            <a href="#services" style="color:var(--brand-blue)">الخدمات</a>
+            <a href="#gallery" style="color:var(--brand-blue)">القطاعات</a>
+            <a href="#clients" style="color:var(--brand-blue)">عملاؤنا</a>
+            <a href="#contact" class="px-4 py-2 rounded-lg btn-primary">اطلب عرض سعر</a>
+        </nav>
 
-        <button id="mobile-menu-btn" class="md:hidden px-3 py-2 rounded border btn-outline">القائمة</button>
-  </div>
+        <button id="mobile-menu-btn" class="md:hidden px-3 py-2 rounded border btn-outline">القائمة</button>
+    </div>
 
-    <div id="mnav" class="md:hidden hidden border-t">
-    <div class="px-4 py-3 flex flex-col gap-3 text-sm mobile-nav-links">
-      <a href="#about" class="text-blue-900">من نحن</a>
-      <a href="#services" class="text-blue-900">الخدمات</a>
-      <a href="#gallery" class="text-blue-900">القطاعات</a>
-      <a href="#clients" class="text-blue-900">عملاؤنا</a>
-      <a href="#contact" class="px-4 py-2 rounded-lg text-center btn-primary">اطلب عرض سعر</a>
-    </div>
-  </div>
+    <div id="mnav" class="md:hidden hidden border-t">
+        <div class="px-4 py-3 flex flex-col gap-3 text-sm mobile-nav-links">
+            <a href="#about" class="text-blue-900">من نحن</a>
+            <a href="#services" class="text-blue-900">الخدمات</a>
+            <a href="#gallery" class="text-blue-900">القطاعات</a>
+            <a href="#clients" class="text-blue-900">عملاؤنا</a>
+            <a href="#contact" class="px-4 py-2 rounded-lg text-center btn-primary">اطلب عرض سعر</a>
+        </div>
+    </div>
 </header>
 
 <section class="brand-gradient text-white">
-  <div class="container mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-8 items-center">
-    <div>
-      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">حلول متكاملة للزي المهني<br/>توريد • تصنيع • تخصيص</h1>
-      <p class="mt-4 text-lg text-white/90">نخدم المستشفيات، المدارس، المصانع والقطاعات المختلفة عبر شبكة تصنيع وتوريد موثوقة.</p>
-      <div class="mt-6 flex gap-3">
-        <a href="#contact" class="px-5 py-3 rounded-lg font-semibold" style="background:#ffffff;color:var(--brand-blue)">اطلب عرض سعر</a>
-        <a href="#services" class="px-5 py-3 rounded-lg font-semibold border border-white/70">تعرّف على خدماتنا</a>
-      </div>
-    </div>
-    <div class="bg-white/10 rounded-2xl p-6 md:p-8">
-      <ul class="grid grid-cols-2 gap-4 text-sm">
-        <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold">+50</span> عميل نشط</li>
-        <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold">+10</span> قطاعات نخدمها</li>
-        <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold">+8</span> دول توريد</li>
-        <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold">ISO</span> التزام بالجودة</li>
-      </ul>
-    </div>
-  </div>
+    <div class="container mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">حلول متكاملة للزي المهني<br/>توريد • تصنيع • تخصيص</h1>
+            <p class="mt-4 text-lg text-white/90">نخدم المستشفيات، المدارس، المصانع والقطاعات المختلفة عبر شبكة تصنيع وتوريد موثوقة.</p>
+            <div class="mt-6 flex gap-3">
+                <a href="#contact" class="px-5 py-3 rounded-lg font-semibold" style="background:#ffffff;color:var(--brand-blue)">اطلب عرض سعر</a>
+                <a href="#services" class="px-5 py-3 rounded-lg font-semibold border border-white/70">تعرّف على خدماتنا</a>
+            </div>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-6 md:p-8">
+            <ul class="grid grid-cols-2 gap-4 text-sm">
+                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold">+50</span> عميل نشط</li>
+                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold">+10</span> قطاعات نخدمها</li>
+                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold">+8</span> دول توريد</li>
+                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold">ISO</span> التزام بالجودة</li>
+            </ul>
+        </div>
+    </div>
 </section>
 
 <section id="about" class="py-16 md:py-20 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <div class="max-w-3xl">
-      <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color:var(--brand-blue)">من نحن</h2>
-      <p class="text-gray-700 leading-8">NEFPUS — المؤسسة الوطنية لتوريد وتجهيز الزي المهني. نقدم حلولًا متكاملة تشمل دراسة الاحتياج، التصميم، اختيار الأقمشة، التصنيع، التفصيل، الطباعة والتطريز، ثم التغليف والتوصيل، مع التزام كامل بمعايير الجودة والمواعيد.</p>
-    </div>
-  </div>
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color:var(--brand-blue)">من نحن</h2>
+            <p class="text-gray-700 leading-8">NEFPUS — المؤسسة الوطنية لتوريد وتجهيز الزي المهني. نقدم حلولًا متكاملة تشمل دراسة الاحتياج، التصميم، اختيار الأقمشة، التصنيع، التفصيل، الطباعة والتطريز، ثم التغليف والتوصيل، مع التزام كامل بمعايير الجودة والمواعيد.</p>
+        </div>
+    </div>
 </section>
 
 <section id="services" class="py-16 md:py-20">
-  <div class="container mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-bold mb-10" style="color:var(--brand-blue)">الخدمات</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
-        <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">توريد الزي للمصانع</h3>
-        <p class="text-gray-600">ملابس صناعية مقاومة للاهتراء والحرارة مع خيارات عاكسة للسلامة ومقاسات دقيقة للعمال.</p>
-      </div>
-      <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
-        <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">زي المدارس</h3>
-        <p class="text-gray-600">تصميمات بأقمشة مريحة ومتينة، تفصيل للأعمار المختلفة، وخيارات ألوان وهوية مدرسية.</p>
-      </div>
-      <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
-        <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">سكرابات طبية للمستشفيات</h3>
-        <p class="text-gray-600">Scrubs طبية قابلة للتنفس وسريعة الجفاف، مقاومة للبقع مع تطريز شعارات الأقسام.</p>
-      </div>
-      <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
-        <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">تصميم وتخصيص الهوية</h3>
-        <p class="text-gray-600">نماذج مقاسات، لوحات ألوان، تطريز/طباعة، وباكجات جاهزة للتسليم.</p>
-      </div>
-      <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
-        <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">عقود توريد سنوية</h3>
-        <p class="text-gray-600">توريد مرحلي مع جداول تسليم وأسعار تفضيلية وخيارات إعادة الطلب السريع.</p>
-      </div>
-      <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
-        <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">خدمات لوجستية</h3>
-        <p class="text-gray-600">تغليف، ترميز، تتبع شحنات، وتسليم لمواقع متعددة داخل المملكة.</p>
-      </div>
-    </div>
-    <div class="mt-8">
-      <a href="#contact" class="inline-block px-5 py-3 rounded-lg text-white font-semibold btn-primary">اطلب عرض سعر الآن</a>
-    </div>
-  </div>
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold mb-10" style="color:var(--brand-blue)">الخدمات</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">توريد الزي للمصانع</h3>
+                <p class="text-gray-600">ملابس صناعية مقاومة للاهتراء والحرارة مع خيارات عاكسة للسلامة ومقاسات دقيقة للعمال.</p>
+            </div>
+            <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">زي المدارس</h3>
+                <p class="text-gray-600">تصميمات بأقمشة مريحة ومتينة، تفصيل للأعمار المختلفة، وخيارات ألوان وهوية مدرسية.</p>
+            </div>
+            <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">سكرابات طبية للمستشفيات</h3>
+                <p class="text-gray-600">Scrubs طبية قابلة للتنفس وسريعة الجفاف، مقاومة للبقع مع تطريز شعارات الأقسام.</p>
+            </div>
+            <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">تصميم وتخصيص الهوية</h3>
+                <p class="text-gray-600">نماذج مقاسات، لوحات ألوان، تطريز/طباعة، وباكجات جاهزة للتسليم.</p>
+            </div>
+            <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">عقود توريد سنوية</h3>
+                <p class="text-gray-600">توريد مرحلي مع جداول تسليم وأسعار تفضيلية وخيارات إعادة الطلب السريع.</p>
+            </div>
+            <div class="p-6 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="font-bold mb-2 text-lg" style="color:var(--brand-blue)">خدمات لوجستية</h3>
+                <p class="text-gray-600">تغليف، ترميز، تتبع شحنات، وتسليم لمواقع متعددة داخل المملكة.</p>
+            </div>
+        </div>
+        <div class="mt-8">
+            <a href="#contact" class="inline-block px-5 py-3 rounded-lg text-white font-semibold btn-primary">اطلب عرض سعر الآن</a>
+        </div>
+    </div>
 </section>
 
 <section id="gallery" class="py-16 md:py-20 bg-white">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-2xl md:text-3xl font-bold mb-12" style="color:var(--brand-blue)">
-      نماذج من القطاعات التي نخدمها
-    </h2>
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-12" style="color:var(--brand-blue)">
+            نماذج من القطاعات التي نخدمها
+        </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
-        <img src="https://i.ibb.co/j97FM0LK/1.jpg"
-             alt="قطاع الضيافة"
-             class="w-full h-64 object-cover">
-        <div class="bg-white py-3">
-          <h3 class="text-lg font-semibold text-gray-700">قطاع الضيافة</h3>
-        </div>
-      </div>
+            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                <img src="https://i.ibb.co/j97FM0LK/1.jpg"
+                    alt="قطاع الضيافة"
+                    class="w-full h-64 object-cover">
+                <div class="bg-white py-3">
+                    <h3 class="text-lg font-semibold text-gray-700">قطاع الضيافة</h3>
+                </div>
+            </div>
 
-            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
-        <img src="https://i.ibb.co/n84jRJqY/2.jpg"
-             alt="قطاع المصانع"
-             class="w-full h-64 object-cover">
-        <div class="bg-white py-3">
-          <h3 class="text-lg font-semibold text-gray-700">قطاع المصانع</h3>
-        </div>
-        </div>
+            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                <img src="https://i.ibb.co/n84jRJqY/2.jpg"
+                    alt="قطاع المصانع"
+                    class="w-full h-64 object-cover">
+                <div class="bg-white py-3">
+                    <h3 class="text-lg font-semibold text-gray-700">قطاع المصانع</h3>
+                </div>
+            </div>
 
-            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
-        <img src="https://i.ibb.co/B53Gs2qd/3.jpg"
-             alt="قطاع المدارس"
-             class="w-full h-64 object-cover">
-        <div class="bg-white py-3">
-          <h3 class="text-lg font-semibold text-gray-700">قطاع التعليم والمدارس</h3>
-        </div>
-      </div>
+            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                <img src="https://i.ibb.co/B53Gs2qd/3.jpg"
+                    alt="قطاع المدارس"
+                    class="w-full h-64 object-cover">
+                <div class="bg-white py-3">
+                    <h3 class="text-lg font-semibold text-gray-700">قطاع التعليم والمدارس</h3>
+                </div>
+            </div>
 
-            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
-        <img src="https://i.ibb.co/DDqfdGTW/4.jpg"
-             alt="قطاع المستشفيات"
-             class="w-full h-64 object-cover">
-        <div class="bg-white py-3">
-          <h3 class="text-lg font-semibold text-gray-700">قطاع المستشفيات</h3>
-        </div>
-      </div>
+            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                <img src="https://i.ibb.co/DDqfdGTW/4.jpg"
+                    alt="قطاع المستشفيات"
+                    class="w-full h-64 object-cover">
+                <div class="bg-white py-3">
+                    <h3 class="text-lg font-semibold text-gray-700">قطاع المستشفيات</h3>
+                </div>
+            </div>
 
-    </div>
-  </div>
+        </div>
+    </div>
 </section>
 
 <section id="clients" class="py-16 md:py-20 bg-gray-50">
-  <div class="container mx-auto px-4 text-center">
-    <div class="inline-flex items-center gap-2 border rounded-full px-4 py-2 mb-8 text-sm bg-white">
-      <span style="color:#F59E0B;letter-spacing:1px;">★★★★★</span>
-      <span class="text-gray-700">الثقة التي بنيناها تُحكى على ألسنة شركائنا</span>
-    </div>
+    <div class="container mx-auto px-4 text-center">
+        <div class="inline-flex items-center gap-2 border rounded-full px-4 py-2 mb-8 text-sm bg-white">
+            <span style="color:#F59E0B;letter-spacing:1px;">★★★★★</span>
+            <span class="text-gray-700">الثقة التي بنيناها تُحكى على ألسنة شركائنا</span>
+        </div>
 
-    <h2 class="text-2xl md:text-3xl font-bold mb-8" style="color:var(--brand-blue)">عملاؤنا</h2>
+        <h2 class="text-2xl md:text-3xl font-bold mb-8" style="color:var(--brand-blue)">عملاؤنا</h2>
 
-    <div class="carousel-root mx-auto" id="clientsCarousel">
-      <div class="carousel-track">
-                <div class="carousel-slide">
-          <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo">
-          <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo">
-                    <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo hidden md:flex">
-        </div>
-                <div class="carousel-slide">
-          <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo">
-          <img src="https://i.ibb.co/TDgt2D9c/client5.png" alt="عميل 5" class="client-logo">
-          <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo hidden md:flex">
-        </div>
-                <div class="carousel-slide">
-          <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo">
-          <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo">
-          <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo hidden md:flex">
-        </div>
-      </div>
-    </div>
+        <div class="carousel-root mx-auto" id="clientsCarousel">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo">
+                    <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo">
+                    <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo hide-md">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo">
+                    <img src="https://i.ibb.co/TDgt2D9c/client5.png" alt="عميل 5" class="client-logo">
+                    <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo hide-md">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo">
+                    <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo">
+                    <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo hide-md">
+                </div>
+            </div>
+        </div>
 
-    <div id="clientsDots" class="mt-6 flex items-center justify-center gap-3"></div>
-  </div>
+        <div id="clientsDots" class="mt-6 flex items-center justify-center gap-3"></div>
+    </div>
 </section>
 
 <section id="contact" class="py-16 md:py-20 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <div class="grid md:grid-cols-2 gap-8 items-start">
-      <div>
-        <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color:var(--brand-blue)">اطلب عرض سعر</h2>
-        <p class="text-gray-700 mb-6">املأ النموذج وسيتم التواصل خلال 24 ساعة عمل.</p>
-        <ul class="space-y-3 text-gray-700">
-          <li><strong>الإيميل:</strong> info@nefpus.sa</li>
-          <li><strong>الهاتف:</strong> +966 59 099 2632</li>
-          <li><strong>العنوان:</strong> المملكة العربية السعودية</li>
-        </ul>
-        <div class="mt-4 flex gap-3">
-          <a href="https://wa.me/966590992632" class="px-4 py-2 rounded-lg text-white btn-primary">واتساب مباشر</a>
-          <a href="https://forms.gle/bUnUWAiczpaQCDjC8" target="_blank" rel="noopener" class="px-4 py-2 rounded-lg btn-outline">النموذج الخارجي (اختياري)</a>
-        </div>
-      </div>
-      <div class="bg-white p-0 rounded-2xl shadow border border-gray-100 overflow-hidden">
-                <iframe src="https://forms.gle/bUnUWAiczpaQCDjC8" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="نموذج طلب عرض سعر NEFPUS">جارٍ تحميل النموذج…</iframe>
-      </div>
-    </div>
-  </div>
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color:var(--brand-blue)">اطلب عرض سعر</h2>
+                <p class="text-gray-700 mb-6">املأ النموذج وسيتم التواصل خلال 24 ساعة عمل.</p>
+                <ul class="space-y-3 text-gray-700">
+                    <li><strong>الإيميل:</strong> info@nefpus.sa</li>
+                    <li><strong>الهاتف:</strong> +966 59 099 2632</li>
+                    <li><strong>العنوان:</strong> المملكة العربية السعودية</li>
+                </ul>
+                <div class="mt-4 flex gap-3">
+                    <a href="https://wa.me/966590992632" class="px-4 py-2 rounded-lg text-white btn-primary">واتساب مباشر</a>
+                    <a href="https://forms.gle/bUnUWAiczpaQCDjC8" target="_blank" rel="noopener" class="px-4 py-2 rounded-lg btn-outline">النموذج الخارجي (اختياري)</a>
+                </div>
+            </div>
+            <div class="bg-white p-0 rounded-2xl shadow border border-gray-100 overflow-hidden">
+                <iframe src="https://forms.gle/bUnUWAiczpaQCDjC8" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="نموذج طلب عرض سعر NEFPUS">جارٍ تحميل النموذج…</iframe>
+            </div>
+        </div>
+    </div>
 </section>
 
 <footer class="py-8 border-t">
-  <div class="container mx-auto px-4 text-sm text-gray-600 flex flex-col md:flex-row items-center justify-between gap-3">
-    <p>© <span id="year"></span> NEFPUS — جميع الحقوق محفوظة</p>
-    <p>National Establishment for Professional Uniform Supply</p>
-  </div>
+    <div class="container mx-auto px-4 text-sm text-gray-600 flex flex-col md:flex-row items-center justify-between gap-3">
+        <p>© <span id="year"></span> NEFPUS — جميع الحقوق محفوظة</p>
+        <p>National Establishment for Professional Uniform Supply</p>
+    </div>
 </footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // تحديث السنة في الفوتر
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // تحديث السنة في الفوتر
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // وظيفة إخفاء قائمة الجوال
-    const mobileNav = document.getElementById('mnav');
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileNavLinks = document.querySelector('.mobile-nav-links');
+    // وظيفة إخفاء قائمة الجوال
+    const mobileNav = document.getElementById('mnav');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNavLinks = document.querySelector('.mobile-nav-links');
 
-    function hideMobileNav() {
-        mobileNav.classList.add('hidden');
-    }
+    function hideMobileNav() {
+        mobileNav.classList.add('hidden');
+    }
 
-    // مُستمع لزر القائمة
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('hidden');
-    });
+    // مُستمع لزر القائمة
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('hidden');
+    });
 
-    // مُستمع للروابط داخل قائمة الجوال لإخفائها بعد النقر (تم إصلاح استخدام onclick)
-    mobileNavLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', hideMobileNav);
-    });
+    // مُستمع للروابط داخل قائمة الجوال لإخفائها بعد النقر (تم إصلاح استخدام onclick)
+    mobileNavLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', hideMobileNav);
+    });
 
-    // منطق الكاروسيل
-    const root = document.getElementById('clientsCarousel');
-    const track = root.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const dotsWrap = document.getElementById('clientsDots');
+    // منطق الكاروسيل
+    const root = document.getElementById('clientsCarousel');
+    const track = root.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const dotsWrap = document.getElementById('clientsDots');
 
-    let index = 0, timer = null;
+    let index = 0, timer = null;
 
-    // إنشاء النقاط
-    slides.forEach((_,i)=>{
-      const b = document.createElement('button');
-      b.className = 'dot' + (i===0?' active':'');
-      b.addEventListener('click', ()=>goTo(i,true));
-      dotsWrap.appendChild(b);
-    });
-    const dots = Array.from(dotsWrap.children);
+    // إنشاء النقاط
+    slides.forEach((_,i)=>{
+        const b = document.createElement('button');
+        b.className = 'dot' + (i===0?' active':'');
+        b.addEventListener('click', ()=>goTo(i,true));
+        dotsWrap.appendChild(b);
+    });
+    const dots = Array.from(dotsWrap.children);
 
-    function goTo(i, user=false){
-      index = (i + slides.length) % slides.length;
-      track.style.transform = `translateX(-${index*100}%)`;
-      dots.forEach((d,di)=>d.classList.toggle('active', di===index));
-      if(user) restart();
-    }
-    function next(){ goTo(index+1); }
-    function start(){ timer = setInterval(next, 4000); }
-    function stop(){ clearInterval(timer); timer=null; }
-    function restart(){ stop(); start(); }
+    function goTo(i, user=false){
+        index = (i + slides.length) % slides.length;
+        // هنا نستخدم اسم الكلاس المحدث (carousel-track)
+        track.style.transform = `translateX(-${index*100}%)`; 
+        dots.forEach((d,di)=>d.classList.toggle('active', di===index));
+        if(user) restart();
+    }
+    function next(){ goTo(index+1); }
+    function start(){ timer = setInterval(next, 4000); }
+    function stop(){ clearInterval(timer); timer=null; }
+    function restart(){ stop(); start(); }
 
-    // تفاعل الماوس
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', start);
+    // تفاعل الماوس
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
 
-    // بدء التشغيل
-    start();
+    // بدء التشغيل
+    start();
 });
 </script>
 
