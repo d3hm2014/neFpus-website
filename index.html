@@ -320,29 +320,28 @@
         <div class="carousel-root mx-auto" id="clientsCarousel">
             <div class="carousel-track">
                 <div class="carousel-slide">
-                    <img src="logo-e1582534671474.png" alt="شعار نوبكو - NUPCO" class="client-logo" loading="lazy">
-                    <img src="1746521977لوجو مدارس المشرقية الأهلية.webp" alt="شعار مدارس المشرقية الأهلية" class="client-logo" loading="lazy">
-                    <img src="Est.pdf" alt="شعار مؤسسة مزايا الحلول / GAYA" class="client-logo" style="filter: none; opacity: 1;" loading="lazy"> 
-                    <img src="https://i.ibb.co/4R3fRTPM/nefups-logo.jpg" alt="شعار العميل الجديد" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/BVW7MdvS/Est.jpg" alt="شعار مزايا الحلول / GAYA" class="client-logo" loading="lazy" style="filter: none; opacity: 1;">
+                    <img src="https://i.ibb.co/nqt2H1Xk/image.png" alt="شعار مدارس المشرقية الأهلية" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/bMLxWTpj/image.png" alt="شعار نوبكو - NUPCO" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/0yMn0BQh/2025-10-20-19-45-40-6980ab8f.jpg" alt="أيقونة زي طبي" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/qMQG0196/Chat-GPT-Image-Oct-7-2025-01-19-56-PM.png" alt="شعار عميل إضافي 1" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/N6tNf1W1/Chat-GPT-Image-Oct-14-2025-03-57-57-PM.png" alt="شعار عميل إضافي 2" class="client-logo" loading="lazy">
                 </div>
                 
                 <div class="carousel-slide">
-                    <img src="logo-e1582534671474.png" alt="شعار نوبكو - NUPCO" class="client-logo" loading="lazy">
-                    <img src="1746521977لوجو مدارس المشرقية الأهلية.webp" alt="شعار مدارس المشرقية الأهلية" class="client-logo" loading="lazy">
-                    <img src="Est.pdf" alt="شعار مؤسسة مزايا الحلول / GAYA" class="client-logo" style="filter: none; opacity: 1;" loading="lazy">
-                    <img src="https://i.ibb.co/4R3fRTPM/nefups-logo.jpg" alt="شعار العميل الجديد" class="client-logo" loading="lazy">
-                </div>
-                 
-                 <div class="carousel-slide">
-                    <img src="logo-e1582534671474.png" alt="شعار نوبكو - NUPCO" class="client-logo" loading="lazy">
-                    <img src="1746521977لوجو مدارس المشرقية الأهلية.webp" alt="شعار مدارس المشرقية الأهلية" class="client-logo" loading="lazy">
-                    <img src="Est.pdf" alt="شعار مؤسسة مزايا الحلول / GAYA" class="client-logo" style="filter: none; opacity: 1;" loading="lazy">
-                    <img src="https://i.ibb.co/4R3fRTPM/nefups-logo.jpg" alt="شعار العميل الجديد" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/BVW7MdvS/Est.jpg" alt="شعار مزايا الحلول / GAYA" class="client-logo" loading="lazy" style="filter: none; opacity: 1;">
+                    <img src="https://i.ibb.co/nqt2H1Xk/image.png" alt="شعار مدارس المشرقية الأهلية" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/bMLxWTpj/image.png" alt="شعار نوبكو - NUPCO" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/0yMn0BQh/2025-10-20-19-45-40-6980ab8f.jpg" alt="أيقونة زي طبي" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/qMQG0196/Chat-GPT-Image-Oct-7-2025-01-19-56-PM.png" alt="شعار عميل إضافي 1" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/N6tNf1W1/Chat-GPT-Image-Oct-14-2025-03-57-57-PM.png" alt="شعار عميل إضافي 2" class="client-logo" loading="lazy">
                 </div>
             </div>
         </div>
-
-        <div id="clientsDots" class="mt-6 flex items-center justify-center gap-3"></div>
+        <div id="clientsDots" class="mt-6 flex items-center justify-center gap-3">
+            <button class="dot active" onclick="goTo(0,true)"></button>
+            <button class="dot" onclick="goTo(1,true)"></button>
+        </div>
     </div>
 </section>
 
@@ -499,6 +498,40 @@
 </footer>
 
 <script>
+    function goTo(i, user=false){
+        const track = document.querySelector('.carousel-track');
+        const dots = Array.from(document.getElementById('clientsDots').children);
+        const index = (i + 2) % 2; 
+        track.style.transform = `translateX(-${i*100}%)`; 
+        dots.forEach((d,di)=>d.classList.toggle('active', di===index));
+        if(user) restart();
+    }
+    
+    function next(){
+        const root = document.getElementById('clientsCarousel');
+        const track = root.querySelector('.carousel-track');
+        let index = document.querySelectorAll('#clientsDots .dot.active').length > 0 
+                    ? Array.from(document.getElementById('clientsDots').children).findIndex(dot => dot.classList.contains('active')) 
+                    : 0;
+
+        if (index === 1) {
+            goTo(2);
+            setTimeout(() => {
+                track.style.transition = 'none';
+                goTo(0);
+                setTimeout(() => {
+                    track.style.transition = 'transform .6s ease';
+                }, 50); 
+            }, 600);
+        } else {
+            goTo(index + 1);
+        }
+    }
+
+    function start(){ window.carouselTimer = setInterval(next, 4000); }
+    function stop(){ clearInterval(window.carouselTimer); window.carouselTimer=null; }
+    function restart(){ stop(); start(); }
+
 document.addEventListener('DOMContentLoaded', () => {
     // تحديث السنة في الفوتر
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -521,57 +554,15 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNavLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', hideMobileNav);
     });
-
-    // منطق الكاروسيل 
+    
+    // بدء تشغيل الكاروسيل
     const root = document.getElementById('clientsCarousel');
-    const track = root.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const dotsWrap = document.getElementById('clientsDots');
-
-    let index = 0, timer = null;
-
-    slides.forEach((_,i)=>{
-        if (i < 2) { 
-            const b = document.createElement('button');
-            b.className = 'dot' + (i===0?' active':'');
-            b.addEventListener('click', ()=>goTo(i,true));
-            dotsWrap.appendChild(b);
-        }
-    });
-    const dots = Array.from(dotsWrap.children);
-
-    function goTo(i, user=false){
-        index = (i + 2) % 2; 
-        track.style.transform = `translateX(-${i*100}%)`; 
-        dots.forEach((d,di)=>d.classList.toggle('active', di===index));
-        if(user) restart();
+    if (root) {
+        root.addEventListener('mouseenter', stop);
+        root.addEventListener('mouseleave', start);
+        start();
     }
     
-    function next(){
-        if (index === 1) {
-            goTo(2);
-            setTimeout(() => {
-                track.style.transition = 'none';
-                goTo(0);
-                setTimeout(() => {
-                    track.style.transition = 'transform .6s ease';
-                }, 50); 
-            }, 600);
-        } else {
-            goTo(index + 1);
-        }
-    }
-
-    function start(){ timer = setInterval(next, 4000); }
-    function stop(){ clearInterval(timer); timer=null; }
-    function restart(){ stop(); start(); }
-
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', start);
-
-    start();
-
-
     // منطق الأسئلة الشائعة (FAQ Accordion Logic)
     document.querySelectorAll('.faq-item').forEach(item => {
         const question = item.querySelector('.faq-question');
