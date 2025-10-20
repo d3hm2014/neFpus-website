@@ -32,20 +32,32 @@
         .carousel-track{ display:flex; transition:transform .6s ease; }
         .carousel-slide{
             min-width:100%; box-sizing:border-box;
-            display:flex; align-items:center; justify-content:center;
-            gap: clamp(64px, 8vw, 180px); /* فراغ مرن */
-            padding: 10px 16px; flex-wrap: nowrap;
+            /* زيادة عدد الشعارات المرئية على الشاشات الكبيرة */
+            display:grid; 
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+            gap: clamp(30px, 5vw, 60px); 
+            padding: 10px 16px; 
+            align-items:center; 
+            justify-content:center;
         }
         
-        /* تعريف عام للشعارات */
+        /* تعريف عام للشعارات - المظهر الاحترافي */
         .client-logo{
-            height: clamp(80px, 12vw, 120px);
-            width:auto; object-fit:contain;
-            filter:grayscale(.1);
-            transition:transform .25s ease, filter .25s ease, opacity .25s ease;
-            opacity:.95; flex:0 0 auto; max-width: 100%;
+            height: clamp(50px, 10vw, 80px); /* ارتفاع ثابت وأقل ليتناسب مع الشعارات الكثيرة */
+            width:auto; 
+            object-fit:contain;
+            /* المظهر الاحترافي: رمادي مع تحول للألوان عند المرور (Hover) */
+            filter:grayscale(100%) brightness(110%);
+            transition:filter .5s ease, transform .25s ease;
+            opacity:.85; 
+            max-width: 100%;
+            margin: 0 auto; /* توسيط الشعار في الشبكة */
         }
-        .client-logo:hover{ transform:scale(1.08); filter:grayscale(0); opacity:1; }
+        .client-logo:hover{ 
+            filter:grayscale(0%) brightness(100%); 
+            transform:scale(1.05); 
+            opacity:1; 
+        }
 
         /* أنماط النقاط */
         .dot{
@@ -54,15 +66,10 @@
         }
         .dot.active{ background:#1E3A8A; opacity:1; }
 
-        /* إخفاء الشعار الثالث على الشاشات المتوسطة/الصغيرة */
-        @media (max-width: 768px){
-            .hide-md{ display:none !important; }
-        }
-
         /* زر واتساب العائم */
         .floating-whatsapp {
             position: fixed;
-            left: 20px; /* أو right: 20px; إذا كنت تفضل الجهة اليمنى */
+            left: 20px;
             bottom: 20px;
             z-index: 1000;
             background-color: #25D366;
@@ -270,19 +277,22 @@
         <div class="carousel-root mx-auto" id="clientsCarousel">
             <div class="carousel-track">
                 <div class="carousel-slide">
-                    <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo">
-                    <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo">
-                    <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo hide-md">
+                    <img src="https://i.ibb.co/3YNP1Zc2" alt="عميل 1" class="client-logo">
+                    <img src="https://i.ibb.co/LFP4hbY" alt="عميل 2" class="client-logo">
+                    <img src="https://i.ibb.co/B2q0MVfM" alt="عميل 3" class="client-logo">
+                    <img src="https://i.ibb.co/FkrJ9fMw" alt="عميل 4" class="client-logo">
                 </div>
                 <div class="carousel-slide">
-                    <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo">
-                    <img src="https://i.ibb.co/TDgt2D9c/client5.png" alt="عميل 5" class="client-logo">
-                    <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo hide-md">
+                    <img src="https://i.ibb.co/TDgt2D9c" alt="عميل 5" class="client-logo">
+                    <img src="https://i.ibb.co/23cWn29Z" alt="عميل 6" class="client-logo">
+                    <img src="https://i.ibb.co/1GhfZWRN" alt="عميل 7" class="client-logo">
+                    <img src="https://i.ibb.co/7dgTjFqV" alt="عميل 8" class="client-logo">
                 </div>
-                <div class="carousel-slide">
-                    <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo">
-                    <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo">
-                    <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo hide-md">
+                 <div class="carousel-slide">
+                    <img src="https://i.ibb.co/3YNP1Zc2" alt="عميل 1" class="client-logo">
+                    <img src="https://i.ibb.co/LFP4hbY" alt="عميل 2" class="client-logo">
+                    <img src="https://i.ibb.co/B2q0MVfM" alt="عميل 3" class="client-logo">
+                    <img src="https://i.ibb.co/FkrJ9fMw" alt="عميل 4" class="client-logo">
                 </div>
             </div>
         </div>
@@ -366,20 +376,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // إنشاء النقاط
     slides.forEach((_,i)=>{
-        const b = document.createElement('button');
-        b.className = 'dot' + (i===0?' active':'');
-        b.addEventListener('click', ()=>goTo(i,true));
-        dotsWrap.appendChild(b);
+        // ننشئ نقاطاً لعدد الشرائح الفعلية التي تحتوي الشعارات (شريحة 1 و 2 فقط)
+        if (i < 2) { 
+            const b = document.createElement('button');
+            b.className = 'dot' + (i===0?' active':'');
+            b.addEventListener('click', ()=>goTo(i,true));
+            dotsWrap.appendChild(b);
+        }
     });
     const dots = Array.from(dotsWrap.children);
 
     function goTo(i, user=false){
-        index = (i + slides.length) % slides.length;
-        track.style.transform = `translateX(-${index*100}%)`; 
+        // هنا نستخدم (index + 2) لأن لدينا شريحتين فقط يتم التنقل بينهما، والشريحة الثالثة هي للتكرار البصري
+        index = (i + 2) % 2; 
+        track.style.transform = `translateX(-${i*100}%)`; 
         dots.forEach((d,di)=>d.classList.toggle('active', di===index));
         if(user) restart();
     }
-    function next(){ goTo(index+1); }
+    
+    // تعديل دالة next لتجنب الانتقال إلى الشريحة الثالثة (التكرارية)
+    function next(){
+        // إذا كان الفهرس 1 (الشريحة الثانية)، انتقل إلى 2 (الشريحة التكرارية) للحركة السلسة
+        if (index === 1) {
+            goTo(2);
+            // بعد الانتقال، قم بإعادة تعيين الحركة فوراً إلى الشريحة الأولى بعد انتهاء الـ transition
+            setTimeout(() => {
+                track.style.transition = 'none';
+                goTo(0);
+                // إعادة خاصية transition بعد التأكد من عودة الشريحة
+                setTimeout(() => {
+                    track.style.transition = 'transform .6s ease';
+                }, 50); 
+            }, 600); // 600ms تتوافق مع مدة الانتقال (transition)
+        } else {
+            // إذا كان الفهرس 0، انتقل إلى 1
+            goTo(index + 1);
+        }
+    }
+
     function start(){ timer = setInterval(next, 4000); }
     function stop(){ clearInterval(timer); timer=null; }
     function restart(){ stop(); start(); }
