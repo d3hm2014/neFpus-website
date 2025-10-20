@@ -185,9 +185,9 @@
 
  <!-- Clients -->
 <!-- Clients (Carousel) -->
+<!-- Clients (Carousel - Responsive, Smooth) -->
 <section id="clients" class="py-16 md:py-20 bg-gray-50">
   <div class="container mx-auto px-4 text-center">
-    <!-- شارة ثقة -->
     <div class="inline-flex items-center gap-2 border rounded-full px-4 py-2 mb-8 text-sm bg-white">
       <span style="color:#F59E0B;letter-spacing:1px;">★★★★★</span>
       <span class="text-gray-700">الثقة التي بنيناها تُحكى على ألسنة شركائنا</span>
@@ -197,135 +197,99 @@
 
     <div class="clients-carousel mx-auto" id="clientsCarousel">
       <div class="clients-track">
-        <!-- الشريحة 1 -->
+        <!-- Slide 1 -->
         <div class="clients-slide">
           <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo">
           <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo">
-          <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo">
+          <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo hide-sm">
         </div>
-        <!-- الشريحة 2 -->
+        <!-- Slide 2 -->
         <div class="clients-slide">
           <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo">
           <img src="https://i.ibb.co/TDgt2D9c/client5.png" alt="عميل 5" class="client-logo">
-          <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo">
+          <img src="https://i.ibb.co/3YNP1Zc2/client1.png" alt="عميل 1" class="client-logo hide-sm">
         </div>
-        <!-- الشريحة 3 -->
+        <!-- Slide 3 -->
         <div class="clients-slide">
           <img src="https://i.ibb.co/LFP4hbY/client2.png" alt="عميل 2" class="client-logo">
           <img src="https://i.ibb.co/B2q0MVfM/client3.png" alt="عميل 3" class="client-logo">
-          <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo">
+          <img src="https://i.ibb.co/FkrJ9fMw/client4.png" alt="عميل 4" class="client-logo hide-sm">
         </div>
       </div>
     </div>
 
-    <!-- النقاط -->
     <div id="clientsDots" class="mt-6 flex items-center justify-center gap-3"></div>
   </div>
 </section>
 
 <style>
-  .clients-carousel {
-    position: relative;
-    overflow: hidden;
-    max-width: 1200px;
+  .clients-carousel{
+    position:relative; overflow:hidden;
+    max-width: 1400px; /* وسّعناها عشان تستوعب 3 شعارات كبار */
   }
-  .clients-track {
-    display: flex;
-    transition: transform 0.6s ease;
+  .clients-track{ display:flex; transition:transform .6s ease; }
+  .clients-slide{
+    min-width:100%;
+    box-sizing:border-box;
+    display:flex; align-items:center; justify-content:center;
+    gap: clamp(64px, 8vw, 180px);   /* فراغ مرن: يكبر ويصغر حسب العرض */
+    padding: 10px 16px;
+    flex-wrap: nowrap;              /* منع الالتفاف */
   }
-  .clients-slide {
-    min-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 120px; /* المسافة بين الشعارات */
-    padding: 20px 0;
+  .client-logo{
+    height: clamp(140px, 20vw, 300px); /* يصل لـ 300px على الشاشات الواسعة */
+    width:auto; object-fit:contain;
+    filter:grayscale(.1);
+    transition:transform .25s ease, filter .25s ease, opacity .25s ease;
+    opacity:.95; flex:0 0 auto;     /* مهم لتجنب التداخل */
+    max-width: 100%;
   }
-  .client-logo {
-    height: 300px; /* ← هنا الحجم الجديد */
-    width: auto;
-    object-fit: contain;
-    filter: grayscale(0.1);
-    transition: transform 0.25s ease, filter 0.25s ease, opacity 0.25s ease;
-    opacity: 0.95;
+  .client-logo:hover{ transform:scale(1.08); filter:grayscale(0); opacity:1; }
+
+  /* إخفاء الشعار الثالث على الشاشات الصغيرة لتفادي التداخل */
+  @media (max-width: 768px){
+    .hide-sm{ display:none; }
   }
-  .client-logo:hover {
-    transform: scale(1.1);
-    filter: grayscale(0);
-    opacity: 1;
+
+  .dot{
+    width:12px;height:12px;border-radius:999px;
+    border:1px solid #1E3A8A;background:#fff;cursor:pointer;opacity:.6;
   }
-  .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 999px;
-    border: 1px solid #1E3A8A;
-    background: #fff;
-    cursor: pointer;
-    opacity: 0.6;
-  }
-  .dot.active {
-    background: #1E3A8A;
-    opacity: 1;
-  }
-  @media (max-width: 640px) {
-    .clients-slide {
-      gap: 48px;
-    }
-    .client-logo {
-      height: 160px;
-    }
-  }
+  .dot.active{ background:#1E3A8A; opacity:1; }
 </style>
 
 <script>
-  (function () {
-    const root = document.getElementById("clientsCarousel");
-    const track = root.querySelector(".clients-track");
-    const slides = Array.from(track.children);
-    const dotsWrap = document.getElementById("clientsDots");
+(function(){
+  const root = document.getElementById('clientsCarousel');
+  const track = root.querySelector('.clients-track');
+  const slides = Array.from(track.children);
+  const dotsWrap = document.getElementById('clientsDots');
 
-    let index = 0,
-      timer = null;
+  let index = 0, timer = null;
 
-    slides.forEach((_, i) => {
-      const b = document.createElement("button");
-      b.className = "dot" + (i === 0 ? " active" : "");
-      b.addEventListener("click", () => goTo(i, true));
-      dotsWrap.appendChild(b);
-    });
+  slides.forEach((_,i)=>{
+    const b = document.createElement('button');
+    b.className = 'dot' + (i===0?' active':'');
+    b.addEventListener('click', ()=>goTo(i,true));
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
 
-    const dots = Array.from(dotsWrap.children);
+  function goTo(i, user=false){
+    index = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index*100}%)`;
+    dots.forEach((d,di)=>d.classList.toggle('active', di===index));
+    if(user) restart();
+  }
+  function next(){ goTo(index+1); }
+  function start(){ timer = setInterval(next, 4000); }
+  function stop(){ clearInterval(timer); timer=null; }
+  function restart(){ stop(); start(); }
 
-    function goTo(i, user = false) {
-      index = (i + slides.length) % slides.length;
-      track.style.transform = `translateX(-${index * 100}%)`;
-      dots.forEach((d, di) => d.classList.toggle("active", di === index));
-      if (user) restart();
-    }
-
-    function next() {
-      goTo(index + 1);
-    }
-
-    function start() {
-      timer = setInterval(next, 3500);
-    }
-
-    function stop() {
-      clearInterval(timer);
-      timer = null;
-    }
-
-    function restart() {
-      stop();
-      start();
-    }
-
-    root.addEventListener("mouseenter", stop);
-    root.addEventListener("mouseleave", start);
-
-    start();
-  })();
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  start();
+})();
 </script>
 
 
