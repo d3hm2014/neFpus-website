@@ -87,6 +87,38 @@
             transform: scale(1.1);
             background-color: #128C7E;
         }
+        
+        /* أنماط الأكورديون (FAQ) */
+        .faq-question {
+            cursor: pointer;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0.5rem;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+        }
+        .faq-question:hover {
+             background-color: #f7f7f7;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+            padding: 0 1.5rem;
+            background-color: #ffffff;
+            border-radius: 0 0 0.5rem 0.5rem;
+        }
+        .faq-answer.open {
+            max-height: 500px; /* قيمة كبيرة لضمان عرض المحتوى */
+            padding: 1rem 1.5rem 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-icon.rotate {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 
@@ -113,6 +145,7 @@
             <a href="#services" style="color:var(--brand-blue)">الخدمات</a>
             <a href="#gallery" style="color:var(--brand-blue)">القطاعات</a>
             <a href="#clients" style="color:var(--brand-blue)">عملاؤنا</a>
+            <a href="#faq" style="color:var(--brand-blue)">أسئلة شائعة</a>
             <a href="#contact" class="px-4 py-2 rounded-lg btn-primary">اطلب عرض سعر</a>
         </nav>
 
@@ -125,6 +158,7 @@
             <a href="#services" class="text-blue-900">الخدمات</a>
             <a href="#gallery" class="text-blue-900">القطاعات</a>
             <a href="#clients" class="text-blue-900">عملاؤنا</a>
+            <a href="#faq" class="text-blue-900">أسئلة شائعة</a>
             <a href="#contact" class="px-4 py-2 rounded-lg text-center btn-primary">اطلب عرض سعر</a>
         </div>
     </div>
@@ -277,22 +311,22 @@
         <div class="carousel-root mx-auto" id="clientsCarousel">
             <div class="carousel-track">
                 <div class="carousel-slide">
-                    <img src="https://i.ibb.co/3YNP1Zc2" alt="عميل 1" class="client-logo">
-                    <img src="https://i.ibb.co/LFP4hbY" alt="عميل 2" class="client-logo">
-                    <img src="https://i.ibb.co/B2q0MVfM" alt="عميل 3" class="client-logo">
-                    <img src="https://i.ibb.co/FkrJ9fMw" alt="عميل 4" class="client-logo">
+                    <img src="https://i.ibb.co/tCg3r0g/client1.png" alt="عميل 1" class="client-logo">
+                    <img src="https://i.ibb.co/Q8Q49rG/client2.png" alt="عميل 2" class="client-logo">
+                    <img src="https://i.ibb.co/308c8fL/client3.png" alt="عميل 3" class="client-logo">
+                    <img src="https://i.ibb.co/1K2F0fD/client4.png" alt="عميل 4" class="client-logo">
                 </div>
                 <div class="carousel-slide">
-                    <img src="https://i.ibb.co/TDgt2D9c" alt="عميل 5" class="client-logo">
-                    <img src="https://i.ibb.co/23cWn29Z" alt="عميل 6" class="client-logo">
-                    <img src="https://i.ibb.co/1GhfZWRN" alt="عميل 7" class="client-logo">
-                    <img src="https://i.ibb.co/7dgTjFqV" alt="عميل 8" class="client-logo">
+                    <img src="https://i.ibb.co/8Y4W7qS/client5.png" alt="عميل 5" class="client-logo">
+                    <img src="https://i.ibb.co/b3t0n2Y/client6.png" alt="عميل 6" class="client-logo">
+                    <img src="https://i.ibb.co/Wc2rF1L/client7.png" alt="عميل 7" class="client-logo">
+                    <img src="https://i.ibb.co/2v2x2xK/client8.png" alt="عميل 8" class="client-logo">
                 </div>
                  <div class="carousel-slide">
-                    <img src="https://i.ibb.co/3YNP1Zc2" alt="عميل 1" class="client-logo">
-                    <img src="https://i.ibb.co/LFP4hbY" alt="عميل 2" class="client-logo">
-                    <img src="https://i.ibb.co/B2q0MVfM" alt="عميل 3" class="client-logo">
-                    <img src="https://i.ibb.co/FkrJ9fMw" alt="عميل 4" class="client-logo">
+                    <img src="https://i.ibb.co/tCg3r0g/client1.png" alt="عميل 1" class="client-logo">
+                    <img src="https://i.ibb.co/Q8Q49rG/client2.png" alt="عميل 2" class="client-logo">
+                    <img src="https://i.ibb.co/308c8fL/client3.png" alt="عميل 3" class="client-logo">
+                    <img src="https://i.ibb.co/1K2F0fD/client4.png" alt="عميل 4" class="client-logo">
                 </div>
             </div>
         </div>
@@ -301,11 +335,60 @@
     </div>
 </section>
 
-<section id="contact" class="py-16 md:py-20 bg-gray-50">
+<section id="faq" class="py-16 md:py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold mb-10 text-center" style="color:var(--brand-blue)">أسئلة شائعة (FAQ)</h2>
+        <div class="max-w-3xl mx-auto space-y-4">
+            
+            <div class="faq-item">
+                <div class="faq-question flex items-center justify-between">
+                    <span class="font-bold text-gray-800">ما هو الحد الأدنى لكمية الطلب (MOQ) لديكم؟</span>
+                    <svg class="faq-icon w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-600">نحن نخدم جميع أحجام الشركات والمؤسسات، ولكن للحصول على أفضل سعر وأسرع توريد، ننصح بأن لا يقل الطلب عن **50 قطعة** موحدة من الصنف الواحد. يمكنك دائماً التواصل معنا لمناقشة طلبات الكميات الصغيرة.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question flex items-center justify-between">
+                    <span class="font-bold text-gray-800">هل تشمل خدماتكم جميع مناطق المملكة؟</span>
+                    <svg class="faq-icon w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-600">نعم، خدمات التوريد والتوصيل لدينا تغطي جميع مدن ومناطق المملكة العربية السعودية، بما في ذلك المناطق النائية، وذلك بالتعاون مع شبكة من شركات الشحن والخدمات اللوجستية الموثوقة لضمان وصول شحناتك بأمان وفي الموعد.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question flex items-center justify-between">
+                    <span class="font-bold text-gray-800">هل هناك ضمان على جودة الأقمشة ومتانة الزي؟</span>
+                    <svg class="faq-icon w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-600">نحن ملتزمون بأعلى معايير الجودة، ونستخدم أقمشة معتمدة تحمل شهادات دولية. نقدم ضماناً على الأقمشة والتفصيل ضد عيوب الصناعة أو مشكلات التطريز/الطباعة. هدفنا هو متانة الزي ليدوم لسنوات عمل متتالية.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question flex items-center justify-between">
+                    <span class="font-bold text-gray-800">هل يمكننا تعديل التصميمات الحالية أو طلب تصميمات خاصة؟</span>
+                    <svg class="faq-icon w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-600">بالتأكيد. لدينا فريق تصميم داخلي متخصص يعمل معك خطوة بخطوة، بدءًا من عينات الأقمشة والمقاسات القياسية وصولاً إلى التعديل والتخصيص الكامل للزي ليناسب هوية علامتك التجارية ومتطلبات العمل المحددة.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-16 md:py-20 bg-white">
     <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-2 gap-8 items-center">
             
-            <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 text-center">
+            <div class="bg-gray-50 p-8 rounded-2xl shadow-xl border border-gray-100 text-center">
                 <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color:var(--brand-blue)">اطلب عرض سعر مُفصَّل</h2>
                 <p class="text-gray-700 mb-6">املأ نموذج طلب عرض السعر الآن وسيتواصل فريق المبيعات معك خلال **24 ساعة عمل** لتقديم عرض دقيق يلبي احتياجك. </p>
                 
@@ -335,7 +418,7 @@
     </div>
 </section>
 
-<footer class="py-8 border-t">
+<footer class="py-8 border-t bg-gray-50">
     <div class="container mx-auto px-4 text-sm text-gray-600 flex flex-col md:flex-row items-center justify-between gap-3">
         <p>© <span id="year"></span> NEFPUS — جميع الحقوق محفوظة</p>
         <p>National Establishment for Professional Uniform Supply</p>
@@ -366,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', hideMobileNav);
     });
 
-    // منطق الكاروسيل
+    // منطق الكاروسيل 
     const root = document.getElementById('clientsCarousel');
     const track = root.querySelector('.carousel-track');
     const slides = Array.from(track.children);
@@ -374,9 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let index = 0, timer = null;
 
-    // إنشاء النقاط
     slides.forEach((_,i)=>{
-        // ننشئ نقاطاً لعدد الشرائح الفعلية التي تحتوي الشعارات (شريحة 1 و 2 فقط)
         if (i < 2) { 
             const b = document.createElement('button');
             b.className = 'dot' + (i===0?' active':'');
@@ -387,29 +468,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots = Array.from(dotsWrap.children);
 
     function goTo(i, user=false){
-        // هنا نستخدم (index + 2) لأن لدينا شريحتين فقط يتم التنقل بينهما، والشريحة الثالثة هي للتكرار البصري
         index = (i + 2) % 2; 
         track.style.transform = `translateX(-${i*100}%)`; 
         dots.forEach((d,di)=>d.classList.toggle('active', di===index));
         if(user) restart();
     }
     
-    // تعديل دالة next لتجنب الانتقال إلى الشريحة الثالثة (التكرارية)
     function next(){
-        // إذا كان الفهرس 1 (الشريحة الثانية)، انتقل إلى 2 (الشريحة التكرارية) للحركة السلسة
         if (index === 1) {
             goTo(2);
-            // بعد الانتقال، قم بإعادة تعيين الحركة فوراً إلى الشريحة الأولى بعد انتهاء الـ transition
             setTimeout(() => {
                 track.style.transition = 'none';
                 goTo(0);
-                // إعادة خاصية transition بعد التأكد من عودة الشريحة
                 setTimeout(() => {
                     track.style.transition = 'transform .6s ease';
                 }, 50); 
-            }, 600); // 600ms تتوافق مع مدة الانتقال (transition)
+            }, 600);
         } else {
-            // إذا كان الفهرس 0، انتقل إلى 1
             goTo(index + 1);
         }
     }
@@ -418,12 +493,32 @@ document.addEventListener('DOMContentLoaded', () => {
     function stop(){ clearInterval(timer); timer=null; }
     function restart(){ stop(); start(); }
 
-    // تفاعل الماوس
     root.addEventListener('mouseenter', stop);
     root.addEventListener('mouseleave', start);
 
-    // بدء التشغيل
     start();
+
+
+    // منطق الأسئلة الشائعة (FAQ Accordion Logic)
+    document.querySelectorAll('.faq-item').forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+
+        question.addEventListener('click', () => {
+            // إغلاق جميع الإجابات الأخرى (لإبقاء سؤال واحد مفتوحًا فقط)
+            document.querySelectorAll('.faq-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.querySelector('.faq-answer').classList.remove('open');
+                    otherItem.querySelector('.faq-icon').classList.remove('rotate');
+                }
+            });
+
+            // فتح أو إغلاق الإجابة الحالية
+            answer.classList.toggle('open');
+            icon.classList.toggle('rotate');
+        });
+    });
 });
 </script>
 
