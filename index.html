@@ -119,6 +119,14 @@
         .faq-icon.rotate {
             transform: rotate(180deg);
         }
+        /* تعديل خاص لمدخل الـ Select ليعمل بشكل صحيح مع اتجاه RTL */
+        select.appearance-none {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M7 7l3 3 3-3m0 6l-3-3-3 3' stroke='%234B5563' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 1rem center; /* تحريك الأيقونة لليسار ليتناسب مع RTL */
+            padding-left: 3.5rem; /* مسافة كافية للأيقونة */
+            padding-right: 1.5rem; /* للحفاظ على تنسيق الحقول الأخرى */
+        }
     </style>
 </head>
 
@@ -132,7 +140,7 @@
 <header class="sticky top-0 z-50 bg-white/90 backdrop-filter backdrop-blur border-b border-gray-100">
     <div class="container mx-auto px-4 py-3 flex items-center justify-between">
         <a href="#top" aria-label="NEFPUS Home" class="flex items-center gap-3">
-            <img src="https://i.ibb.co/p6Wzhjh2/logo.png" alt="NEFPUS" class="h-14 w-auto">
+            <img src="nefups logo.jpg" alt="NEFPUS" class="h-14 w-auto">
             <div class="hidden sm:block leading-tight">
                 <p class="font-bold text-lg" style="color:var(--brand-blue)">NEFPUS</p>
                 <p class="text-xs text-gray-500">National Establishment for Professional Uniform Supply</p>
@@ -386,42 +394,98 @@
     </div>
 </section>
 
-<section id="contact" class="py-16 md:py-20 bg-white">
+<section id="contact" class="py-16 md:py-20 bg-gray-50">
     <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-            
-            <div class="bg-gray-50 p-8 rounded-2xl shadow-xl border border-gray-100 text-center">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color:var(--brand-blue)">اطلب عرض سعر مُفصَّل</h2>
-                <p class="text-gray-700 mb-6">املأ نموذج طلب عرض السعر الآن وسيتواصل فريق المبيعات معك خلال **24 ساعة عمل** لتقديم عرض دقيق يلبي احتياجك. </p>
-                
-                <a href="https://forms.gle/bUnUWAiczpaQCDjC8" target="_blank" rel="noopener" class="w-full inline-block px-8 py-4 rounded-lg text-white font-bold btn-primary text-lg transition duration-300">
-                    <span class="inline-block align-middle">انتقل لنموذج الطلب</span>
-                    <span class="inline-block align-middle mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform rotate-180"><polyline points="15 17 20 12 15 7"></polyline><line x1="4" y1="12" x2="20" y2="12"></line></svg>
-                    </span>
-                </a>
-                
-                <p class="text-sm text-gray-500 mt-4" style="direction: ltr; text-align: center;">
-                    <span style="direction: rtl; display: inline-block;">أو تواصل مباشرة عبر الهاتف:</span> 
-                    <strong class="font-bold" style="direction: ltr; display: inline-block;">+966 59 099 2632</strong>
-                </p>
-            </div>
+        <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-gray-100">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-center" style="color:var(--brand-blue)">
+                نموذج طلب عرض سعر
+            </h2>
+            <p class="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
+                يرجى ملء النموذج أدناه بدقة لتمكين فريق المبيعات من تجهيز عرض سعر مُفصَّل ومناسب لاحتياجات منشأتكم.
+            </p>
 
-            <div class="p-4 md:p-8">
-                <h3 class="text-xl font-bold mb-4" style="color:var(--brand-blue)">بيانات الاتصال الأخرى</h3>
-                <ul class="space-y-3 text-gray-700">
-                    <li><strong class="font-bold">الإيميل:</strong> info@nefpus.sa</li>
-                    <li>
-                        <strong class="font-bold">الهاتف المباشر:</strong>
+            <form action="#" method="POST" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="company_name" class="block text-sm font-medium text-gray-700">اسم الشركة/المنشأة <span class="text-red-500">*</span></label>
+                        <input type="text" id="company_name" name="company_name" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="contact_person" class="block text-sm font-medium text-gray-700">اسم الشخص المسؤول <span class="text-red-500">*</span></label>
+                        <input type="text" id="contact_person" name="contact_person" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">رقم الهاتف/الواتساب <span class="text-red-500">*</span></label>
+                        <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="مثال: +9665xxxxxxxx">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">البريد الإلكتروني <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="example@company.com">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="sector" class="block text-sm font-medium text-gray-700">القطاع/نوع النشاط <span class="text-red-500">*</span></label>
+                    <select id="sector" name="sector" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 bg-white appearance-none">
+                        <option value="" disabled selected>اختر قطاع نشاط منشأتكم</option>
+                        <option value="مستشفيات وطب">مستشفيات ومراكز طبية</option>
+                        <option value="مدارس وتعليم">مدارس ومؤسسات تعليمية</option>
+                        <option value="مصانع وصناعة">مصانع ومنشآت صناعية</option>
+                        <option value="ضيافة ومطاعم">ضيافة ومطاعم</option>
+                        <option value="أخرى">أخرى (يرجى التحديد في الوصف)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="uniform_type" class="block text-sm font-medium text-gray-700">نوع الزي المطلوب (سكراب، بدلة، قميص... إلخ) <span class="text-red-500">*</span></label>
+                    <input type="text" id="uniform_type" name="uniform_type" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="مثال: سكراب طبي، بدلة عمال، زي مدرسي شتوي">
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                     <div>
+                        <label for="quantity" class="block text-sm font-medium text-gray-700">الكمية التقديرية (بالقطعة) <span class="text-red-500">*</span></label>
+                        <input type="number" id="quantity" name="quantity" required min="10" placeholder="يُفضل أن لا تقل عن 50 قطعة" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="delivery_date" class="block text-sm font-medium text-gray-700">تاريخ التسليم المتوقع (إذا توفر)</label>
+                        <input type="date" id="delivery_date" name="delivery_date" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="details" class="block text-sm font-medium text-gray-700">تفاصيل إضافية عن الطلب (الهوية، الأقمشة، الطباعة)</label>
+                    <textarea id="details" name="details" rows="4" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="اذكر أي تفاصيل إضافية مثل متطلبات الألوان، خامة القماش، أو الحاجة للتطريز/الطباعة."></textarea>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" class="w-full inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-lg font-bold rounded-lg text-white btn-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        أرسل طلب عرض السعر
+                    </button>
+                </div>
+
+                <p class="text-xs text-gray-500 text-center mt-3">
+                    <span class="text-red-500">*</span> حقول مطلوبة. سنقوم بالرد عليك خلال 24 ساعة عمل.
+                </p>
+
+            </form>
+
+             <div class="mt-10 pt-6 border-t border-gray-200 text-center">
+                <h3 class="text-lg font-bold mb-3" style="color:var(--brand-blue)">للتواصل المباشر والاستفسارات</h3>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 text-gray-700">
+                    <a href="mailto:info@nefpus.sa" class="hover:text-blue-700 transition">
+                        <strong class="font-bold">الإيميل:</strong> info@nefpus.sa
+                    </a>
+                    <span class="hidden sm:inline">|</span>
+                    <a href="tel:+966590992632" class="hover:text-blue-700 transition" style="direction: ltr;">
+                        <strong style="direction: rtl; display: inline-block;">الهاتف المباشر:</strong>
                         <span style="direction: ltr; display: inline-block;">+966 59 099 2632</span>
-                    </li>
-                    <li><strong class="font-bold">الموقع:</strong> المملكة العربية السعودية</li>
-                </ul>
-                <div class="mt-6">
-                    <a href="https://wa.me/966590992632" class="px-4 py-2 rounded-lg text-white btn-primary">واتساب مباشر</a>
+                    </a>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
