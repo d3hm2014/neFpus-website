@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title id="page-title" data-ar="NEFPUS | المؤسسة الوطنية لتوريد وتجهيز الزي المهني" data-en="NEFPUS | National Professional Uniform Supply">NEFPUS | المؤسسة الوطنية لتوريد وتجهيز الزي المهني</title>
+    <title id="page-title" data-ar="NEFPUS | المؤسسة الوطنية لتوريد وتجهيز الزي المهني" data-en="NEFPUS | National Professional Uniform Supply" data-tr="NEFPUS | Ulusal Profesyonel Üniforma Tedariki">NEFPUS | المؤسسة الوطنية لتوريد وتجهيز الزي المهني</title>
     <meta name="description" content="NEFPUS — حلول متكاملة لتوريد وتصنيع وتخصيص الزي المهني للمستشفيات والمدارس والمصانع والقطاعات المختلفة داخل المملكة. نلتزم بالتوريد في المواعيد المحددة." />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -174,9 +174,17 @@
 
 <header class="sticky top-0 z-50 bg-white/90 backdrop-filter backdrop-blur border-b border-gray-100">
     <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-        <button id="lang-toggle" onclick="switchLanguage()" class="px-3 py-1 rounded text-sm btn-outline ml-4 border-gray-300">
-            EN
-        </button>
+        <div class="relative ml-4">
+            <button id="lang-toggle-button" onclick="toggleDropdown()" class="px-3 py-1 rounded text-sm btn-outline border-gray-300 flex items-center gap-1">
+                <span id="current-lang-text">العربية</span> 
+                <svg id="dropdown-arrow" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="lang-dropdown-menu" class="absolute z-10 top-full mt-2 w-24 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                <a href="#" onclick="selectLanguage('ar'); closeDropdown(); return false;" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">العربية</a>
+                <a href="#" onclick="selectLanguage('en'); closeDropdown(); return false;" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">English</a>
+                <a href="#" onclick="selectLanguage('tr'); closeDropdown(); return false;" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Türkçe</a>
+            </div>
+        </div>
         
         <a href="#top" aria-label="NEFPUS Home" class="flex items-center gap-3">
             <img id="main-logo" src="https://i.ibb.co/gBfk5MY/nn-logo.jpg" alt="NEFPUS" class="h-14 w-auto">
@@ -188,25 +196,25 @@
         </a>
 
         <nav class="hidden lg:flex items-center gap-6 text-sm" id="main-nav">
-            <a href="#about" class="nav-link brand-text" data-ar="من نحن" data-en="About Us">من نحن</a>
-            <a href="#services" class="nav-link brand-text" data-ar="الخدمات" data-en="Services">الخدمات</a>
-            <a href="#gallery" class="nav-link brand-text" data-ar="القطاعات" data-en="Sectors">القطاعات</a>
-            <a href="#clients" class="nav-link brand-text" data-ar="عملاؤنا" data-en="Clients">عملاؤنا</a>
-            <a href="#faq" class="nav-link brand-text" data-ar="أسئلة شائعة" data-en="FAQ">أسئلة شائعة</a>
-            <a href="#contact" class="px-4 py-2 rounded-lg btn-primary nav-link" data-ar="اطلب عرض سعر" data-en="Request Quote">اطلب عرض سعر</a>
+            <a href="#about" class="nav-link brand-text" data-ar="من نحن" data-en="About Us" data-tr="Hakkımızda">من نحن</a>
+            <a href="#services" class="nav-link brand-text" data-ar="الخدمات" data-en="Services" data-tr="Hizmetler">الخدمات</a>
+            <a href="#gallery" class="nav-link brand-text" data-ar="القطاعات" data-en="Sectors" data-tr="Sektörler">القطاعات</a>
+            <a href="#clients" class="nav-link brand-text" data-ar="عملاؤنا" data-en="Clients" data-tr="Müşterilerimiz">عملاؤنا</a>
+            <a href="#faq" class="nav-link brand-text" data-ar="أسئلة شائعة" data-en="FAQ" data-tr="SSS">أسئلة شائعة</a>
+            <a href="#contact" class="px-4 py-2 rounded-lg btn-primary nav-link" data-ar="اطلب عرض سعر" data-en="Request Quote" data-tr="Fiyat Teklifi Al">اطلب عرض سعر</a>
         </nav>
 
-        <button id="mobile-menu-btn" class="lg:hidden px-3 py-2 rounded border btn-outline nav-link" data-ar="القائمة" data-en="Menu">القائمة</button>
+        <button id="mobile-menu-btn" class="lg:hidden px-3 py-2 rounded border btn-outline nav-link" data-ar="القائمة" data-en="Menu" data-tr="Menü">القائمة</button>
     </div>
 
     <div id="mnav" class="lg:hidden hidden border-t">
         <div class="px-4 py-3 flex flex-col gap-3 text-sm mobile-nav-links">
-            <a href="#about" class="text-blue-900 mobile-nav-link" data-ar="من نحن" data-en="About Us">من نحن</a>
-            <a href="#services" class="text-blue-900 mobile-nav-link" data-ar="الخدمات" data-en="Services">الخدمات</a>
-            <a href="#gallery" class="text-blue-900 mobile-nav-link" data-ar="القطاعات" data-en="Sectors">القطاعات</a>
-            <a href="#clients" class="text-blue-900 mobile-nav-link" data-ar="عملاؤنا" data-en="Clients">عملاؤنا</a>
-            <a href="#faq" class="text-blue-900 mobile-nav-link" data-ar="أسئلة شائعة" data-en="FAQ">أسئلة شائعة</a>
-            <a href="#contact" class="px-4 py-2 rounded-lg text-center btn-primary mobile-nav-link" data-ar="اطلب عرض سعر" data-en="Request Quote">اطلب عرض سعر</a>
+            <a href="#about" class="text-blue-900 mobile-nav-link" data-ar="من نحن" data-en="About Us" data-tr="Hakkımızda">من نحن</a>
+            <a href="#services" class="text-blue-900 mobile-nav-link" data-ar="الخدمات" data-en="Services" data-tr="Hizmetler">الخدمات</a>
+            <a href="#gallery" class="text-blue-900 mobile-nav-link" data-ar="القطاعات" data-en="Sectors" data-tr="Sektörler">القطاعات</a>
+            <a href="#clients" class="text-blue-900 mobile-nav-link" data-ar="عملاؤنا" data-en="Clients" data-tr="Müşterilerimiz">عملاؤنا</a>
+            <a href="#faq" class="text-blue-900 mobile-nav-link" data-ar="أسئلة شائعة" data-en="FAQ" data-tr="SSS">أسئلة شائعة</a>
+            <a href="#contact" class="px-4 py-2 rounded-lg text-center btn-primary mobile-nav-link" data-ar="اطلب عرض سعر" data-en="Request Quote" data-tr="Fiyat Teklifi Al">اطلب عرض سعر</a>
         </div>
     </div>
 </header>
@@ -219,22 +227,22 @@
             
             <div class="md:hidden bg-white/10 rounded-2xl p-4 my-6">
                 <ul class="grid grid-cols-2 gap-3 text-sm" id="hero-stats-mobile">
-                    <li class="bg-white/15 rounded-lg p-3"><span class="block text-xl font-bold stat-value" data-ar="+50" data-en="+50">+50</span> <span class="stat-label" data-ar="عميل رئيسي" data-en="Major Clients">عميل رئيسي</span></li>
-                    <li class="bg-white/15 rounded-lg p-3"><span class="block text-xl font-bold stat-value" data-ar="100%" data-en="100%">100%</span> <span class="stat-label" data-ar="التزام بالموعد" data-en="On-Time Delivery">التزام بالموعد</span></li>
+                    <li class="bg-white/15 rounded-lg p-3"><span class="block text-xl font-bold stat-value" data-ar="+50" data-en="+50" data-tr="+50">+50</span> <span class="stat-label" data-ar="عميل رئيسي" data-en="Major Clients" data-tr="Büyük Müşteri">عميل رئيسي</span></li>
+                    <li class="bg-white/15 rounded-lg p-3"><span class="block text-xl font-bold stat-value" data-ar="100%" data-en="100%" data-tr="%100">100%</span> <span class="stat-label" data-ar="التزام بالموعد" data-en="On-Time Delivery" data-tr="Zamanında Teslimat">التزام بالموعد</span></li>
                 </ul>
             </div>
             
             <div class="mt-6 flex gap-3">
-                <a href="#contact" class="px-5 py-3 rounded-lg font-semibold" style="background:#ffffff;color:var(--brand-blue)" data-ar="اطلب عرض سعر" data-en="Request Quote">اطلب عرض سعر</a>
-                <a href="#services" class="px-5 py-3 rounded-lg font-semibold border border-white/70" data-ar="تعرّف على خدماتنا" data-en="Our Services">تعرّف على خدماتنا</a>
+                <a href="#contact" class="px-5 py-3 rounded-lg font-semibold" style="background:#ffffff;color:var(--brand-blue)" data-ar="اطلب عرض سعر" data-en="Request Quote" data-tr="Fiyat Teklifi Al">اطلب عرض سعر</a>
+                <a href="#services" class="px-5 py-3 rounded-lg font-semibold border border-white/70" data-ar="تعرّف على خدماتنا" data-en="Our Services" data-tr="Hizmetlerimiz">تعرّف على خدماتنا</a>
             </div>
         </div>
         <div class="hidden md:block bg-white/10 rounded-2xl p-6 md:p-8">
             <ul class="grid grid-cols-2 gap-4 text-sm" id="hero-stats-desktop">
-                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold stat-value" data-ar="+50" data-en="+50">+50</span> <span class="stat-label" data-ar="عميل رئيسي" data-en="Major Clients">عميل رئيسي</span></li>
-                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold stat-value" data-ar="100%" data-en="100%">100%</span> <span class="stat-label" data-ar="التزام بالموعد" data-en="On-Time Delivery">التزام بالموعد</span></li>
-                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold stat-value" data-ar="+8" data-en="+8">+8</span> <span class="stat-label" data-ar="دول توريد للمواد" data-en="Supply Countries">دول توريد للمواد</span></li>
-                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold stat-value" data-ar="ISO" data-en="ISO">ISO</span> <span class="stat-label" data-ar="جودة معتمدة" data-en="Certified Quality">جودة معتمدة</span></li>
+                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold stat-value" data-ar="+50" data-en="+50" data-tr="+50">+50</span> <span class="stat-label" data-ar="عميل رئيسي" data-en="Major Clients" data-tr="Büyük Müşteri">عميل رئيسي</span></li>
+                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold stat-value" data-ar="100%" data-en="100%" data-tr="%100">100%</span> <span class="stat-label" data-ar="التزام بالموعد" data-en="On-Time Delivery" data-tr="Zamanında Teslimat">التزام بالموعد</span></li>
+                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold stat-value" data-ar="+8" data-en="+8" data-tr="+8">+8</span> <span class="stat-label" data-ar="دول توريد للمواد" data-en="Supply Countries" data-tr="Tedarik Ülkesi">دول توريد للمواد</span></li>
+                <li class="bg-white/15 rounded-lg p-4"><span class="block text-2xl font-bold stat-value" data-ar="ISO" data-en="ISO" data-tr="ISO">ISO</span> <span class="stat-label" data-ar="جودة معتمدة" data-en="Certified Quality" data-tr="Sertifikalı Kalite">جودة معتمدة</span></li>
             </ul>
         </div>
     </div>
@@ -254,33 +262,33 @@
         <h2 class="text-2xl md:text-3xl font-bold mb-10 brand-text" id="services-title">ما نقدمه لنجاح هويتكم</h2>
         <div class="grid md:grid-cols-3 gap-6" id="services-list">
             <div class="service-card p-6 rounded-xl border border-gray-100 shadow-sm">
-                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="توريد الزي للمصانع" data-en="Factory Uniform Supply">توريد الزي للمصانع</h3>
-                <p class="text-gray-600 service-desc" data-ar="ملابس صناعية مقاومة للاهتراء والحرارة مع خيارات عاكسة للسلامة ومقاسات دقيقة للعمال." data-en="Industrial clothing resistant to wear and heat, with reflective safety options and precise sizing for workers.">ملابس صناعية مقاومة للاهتراء والحرارة مع خيارات عاكسة للسلامة ومقاسات دقيقة للعمال.</p>
+                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="توريد الزي للمصانع" data-en="Factory Uniform Supply" data-tr="Fabrika Üniformaları">توريد الزي للمصانع</h3>
+                <p class="text-gray-600 service-desc" data-ar="ملابس صناعية مقاومة للاهتراء والحرارة مع خيارات عاكسة للسلامة ومقاسات دقيقة للعمال." data-en="Industrial clothing resistant to wear and heat, with reflective safety options and precise sizing for workers." data-tr="İşçiler için aşınmaya ve ısıya dayanıklı, yansıtıcı güvenlik seçenekleri ve hassas ölçülerle endüstriyel giyim.">ملابس صناعية مقاومة للاهتراء والحرارة مع خيارات عاكسة للسلامة ومقاسات دقيقة للعمال.</p>
             </div>
             <div class="service-card p-6 rounded-xl border border-gray-100 shadow-sm">
-                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="زي المدارس" data-en="School Uniforms">زي المدارس</h3>
-                <p class="text-gray-600 service-desc" data-ar="تصميمات بأقمشة مريحة ومتينة، تفصيل للأعمار المختلفة، وخيارات ألوان وهوية مدرسية." data-en="Designs with comfortable and durable fabrics, tailoring for different ages, and color/school identity options.">تصميمات بأقمشة مريحة ومتينة، تفصيل للأعمار المختلفة، وخيارات ألوان وهوية مدرسية.</p>
+                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="زي المدارس" data-en="School Uniforms" data-tr="Okul Üniformaları">زي المدارس</h3>
+                <p class="text-gray-600 service-desc" data-ar="تصميمات بأقمشة مريحة ومتينة، تفصيل للأعمار المختلفة، وخيارات ألوان وهوية مدرسية." data-en="Designs with comfortable and durable fabrics, tailoring for different ages, and color/school identity options." data-tr="Farklı yaşlara uygun, rahat ve dayanıklı kumaşlardan tasarımlar, renk ve okul kimliği seçenekleri.">تصميمات بأقمشة مريحة ومتينة، تفصيل للأعمار المختلفة، وخيارات ألوان وهوية مدرسية.</p>
             </div>
             <div class="service-card p-6 rounded-xl border border-gray-100 shadow-sm">
-                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="سكرابات طبية للمستشفيات" data-en="Medical Scrubs">سكرابات طبية للمستشفيات</h3>
-                <p class="text-gray-600 service-desc" data-ar="Scrubs طبية قابلة للتنفس وسريعة الجفاف، مقاومة للبقع مع تطريز شعارات الأقسام." data-en="Breathable, quick-drying, stain-resistant medical scrubs with embroidered department logos.">Scrubs طبية قابلة للتنفس وسريعة الجفاف، مقاومة للبقع مع تطريز شعارات الأقسام.</p>
+                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="سكرابات طبية للمستشفيات" data-en="Medical Scrubs" data-tr="Hastane Formaları">سكرابات طبية للمستشفيات</h3>
+                <p class="text-gray-600 service-desc" data-ar="Scrubs طبية قابلة للتنفس وسريعة الجفاف، مقاومة للبقع مع تطريز شعارات الأقسام." data-en="Breathable, quick-drying, stain-resistant medical scrubs with embroidered department logos." data-tr="Nefes alabilen, hızlı kuruyan, leke tutmaz tıbbi scrubs'lar, bölüm logoları ile işlenmiş.">Scrubs طبية قابلة للتنفس وسريعة الجفاف، مقاومة للبقع مع تطريز شعارات الأقسام.</p>
             </div>
             <div class="service-card p-6 rounded-xl border border-gray-100 shadow-sm">
-                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="تصميم وتخصيص الهوية" data-en="Design & Customization">تصميم وتخصيص الهوية</h3>
-                <p class="text-gray-600 service-desc" data-ar="نماذج مقاسات، لوحات ألوان، تطريز/طباعة، وباكجات جاهزة للتسليم." data-en="Sizing samples, color palettes, embroidery/printing, and ready-to-deliver packages.">نماذج مقاسات، لوحات ألوان، تطريز/طباعة، وباكجات جاهزة للتسليم.</p>
+                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="تصميم وتخصيص الهوية" data-en="Design & Customization" data-tr="Tasarım ve Kişiselleştirme">تصميم وتخصيص الهوية</h3>
+                <p class="text-gray-600 service-desc" data-ar="نماذج مقاسات، لوحات ألوان، تطريز/طباعة، وباكجات جاهزة للتسليم." data-en="Sizing samples, color palettes, embroidery/printing, and ready-to-deliver packages." data-tr="Ölçü örnekleri, renk paletleri, nakış/baskı ve teslimata hazır paketler.">نماذج مقاسات، لوحات ألوان، تطريز/طباعة، وباكجات جاهزة للتسليم.</p>
             </div>
             <div class="service-card p-6 rounded-xl border border-gray-100 shadow-sm">
-                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="عقود توريد سنوية" data-en="Annual Supply Contracts">عقود توريد سنوية</h3>
-                <p class="text-gray-600 service-desc" data-ar="توريد مرحلي مع جداول تسليم وأسعار تفضيلية وخيارات إعادة الطلب السريع." data-en="Phased supply with delivery schedules, preferential pricing, and quick reorder options.">توريد مرحلي مع جداول تسليم وأسعار تفضيلية وخيارات إعادة الطلب السريع.</p>
+                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="عقود توريد سنوية" data-en="Annual Supply Contracts" data-tr="Yıllık Tedarik Sözleşmeleri">عقود توريد سنوية</h3>
+                <p class="text-gray-600 service-desc" data-ar="توريد مرحلي مع جداول تسليم وأسعار تفضيلية وخيارات إعادة الطلب السريع." data-en="Phased supply with delivery schedules, preferential pricing, and quick reorder options." data-tr="Teslimat takvimleri, imtiyazlı fiyatlandırma ve hızlı yeniden sipariş seçenekleri ile aşamalı tedarik.">توريد مرحلي مع جداول تسليم وأسعار تفضيلية وخيارات إعادة الطلب السريع.</p>
             </div>
             <div class="service-card p-6 rounded-xl border border-gray-100 shadow-sm">
-                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="خدمات لوجستية وتوزيع" data-en="Logistics & Distribution">خدمات لوجستية وتوزيع</h3>
-                <p class="text-gray-600 service-desc" data-ar="تغليف، ترميز، تتبع شحنات، وتسليم لمواقع متعددة داخل المملكة." data-en="Packaging, coding, shipment tracking, and delivery to multiple locations within the Kingdom.">تغليف، ترميز، تتبع شحنات، وتسليم لمواقع متعددة داخل المملكة.</p>
+                <h3 class="font-bold mb-2 text-lg brand-text service-heading" data-ar="خدمات لوجستية وتوزيع" data-en="Logistics & Distribution" data-tr="Lojistik ve Dağıtım Hizmetleri">خدمات لوجستية وتوزيع</h3>
+                <p class="text-gray-600 service-desc" data-ar="تغليف، ترميز، تتبع شحنات، وتسليم لمواقع متعددة داخل المملكة." data-en="Packaging, coding, shipment tracking, and delivery to multiple locations within the Kingdom." data-tr="Krallık içindeki birden fazla konuma paketleme, kodlama, sevkiyat takibi ve teslimat.">تغليف، ترميز، تتبع شحنات، وتسليم لمواقع متعددة داخل المملكة.</p>
             </div>
         </div>
         <div class="mt-12 text-center">
-             <h3 class="text-xl font-bold mb-4 text-gray-700" id="custom-uniform-prompt" data-ar="هل تحتاج زي موحد خاص؟" data-en="Need a Custom Uniform?">هل تحتاج زي موحد خاص؟</h3>
-            <a href="#contact" class="inline-block px-8 py-3 rounded-lg text-white font-bold btn-primary nav-link" data-ar="اطلب تصميمًا مخصصًا" data-en="Request Custom Design">اطلب تصميمًا مخصصًا</a>
+             <h3 class="text-xl font-bold mb-4 text-gray-700" id="custom-uniform-prompt" data-ar="هل تحتاج زي موحد خاص؟" data-en="Need a Custom Uniform?" data-tr="Özel bir üniformaya mı ihtiyacınız var?">هل تحتاج زي موحد خاص؟</h3>
+            <a href="#contact" class="inline-block px-8 py-3 rounded-lg text-white font-bold btn-primary nav-link" data-ar="اطلب تصميمًا مخصصًا" data-en="Request Custom Design" data-tr="Özel Tasarım Talep Et">اطلب تصميمًا مخصصًا</a>
         </div>
     </div>
 </section>
@@ -292,58 +300,37 @@
         </h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10" id="gallery-list">
+
             <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
                 <img src="https://i.ibb.co/j97FM0LK/1.jpg" alt="قطاع الضيافة" class="w-full h-64 object-cover" loading="lazy">
                 <div class="bg-white py-4 px-2">
-                    <h3 class="text-lg font-bold brand-text gallery-sector-title" data-ar="قطاع الضيافة والمطاعم" data-en="Hospitality & F&B">قطاع الضيافة والمطاعم</h3>
-                    <p class="text-sm text-gray-600 mt-1 gallery-sector-desc" data-ar="أناقة وجودة تليق بـ 'خطوط واجهة العميل'." data-en="Elegance and quality fitting the 'client-facing line'.">أناقة وجودة تليق بـ "خطوط واجهة العميل".</p>
-                </div>
-            </div>
-            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
-                 <img src="https://i.ibb.co/n84jRJqY/2.jpg" alt="قطاع المصانع" class="w-full h-64 object-cover" loading="lazy">
-                <div class="bg-white py-4 px-2">
-                    <h3 class="text-lg font-bold brand-text gallery-sector-title" data-ar="قطاع المصانع والصناعات" data-en="Manufacturing & Industry">قطاع المصانع والصناعات</h3>
-                    <p class="text-sm text-gray-600 mt-1 gallery-sector-desc" data-ar="زي سلامة متين، مقاوم للاحتكاك والظروف القاسية." data-en="Durable safety uniforms, resistant to friction and harsh conditions.">زي سلامة متين، مقاوم للاحتكاك والظروف القاسية.</p>
-                </div>
-            </div>
-            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
-                 <img src="https://i.ibb.co/B53Gs2qd/3.jpg" alt="قطاع المدارس" class="w-full h-64 object-cover" loading="lazy">
-                <div class="bg-white py-4 px-2">
-                    <h3 class="text-lg font-bold brand-text gallery-sector-title" data-ar="قطاع التعليم والمدارس" data-en="Education & Schools">قطاع التعليم والمدارس</h3>
-                    <p class="text-sm text-gray-600 mt-1 gallery-sector-desc" data-ar="أقمشة مريحة وعملية تناسب بيئة التعليم." data-en="Comfortable and practical fabrics suitable for the learning environment.">أقمشة مريحة وعملية تناسب بيئة التعليم.</p>
-                </div>
-            </div>
-            <div class="overflow-hidden rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
-                 <img src="https://i.ibb.co/DDqfdGTW/4.jpg" alt="قطاع المستشفيات" class="w-full h-64 object-cover" loading="lazy">
-                <div class="bg-white py-4 px-2">
-                    <h3 class="text-lg font-bold brand-text gallery-sector-title" data-ar="قطاع المستشفيات والطب" data-en="Hospitals & Healthcare">قطاع المستشفيات والطب</h3>
-                    <p class="text-sm text-gray-600 mt-1 gallery-sector-desc" data-ar="تصاميم Scrubs احترافية ومريحة للطواقم الطبية." data-en="Professional and comfortable scrubs designs for medical teams.">تصاميم Scrubs احترافية ومريحة للطواقم الطبية.</p>
+                    <h3 class="text-lg font-bold brand-text gallery-sector-title" data-ar="قطاع الضيافة والمطاعم" data-en="Hospitality & F&B" data-tr="Ağırlama ve Yiyecek">قطاع الضيافة والمطاعم</h3>
+                    <p class="text-sm text-gray-600 mt-1 gallery-sector-desc" data-ar="أناقة وجودة تليق بـ 'خطوط واجهة العميل'." data-en="Elegance and quality fitting the 'client-facing line'." data-tr="Müşteriyle yüz yüze alanlara yakışır zarafet ve kalite.">أناقة وجودة تليق بـ "خطوط واجهة العميل".</p>
                 </div>
             </div>
 
-        </div>
+            </div>
     </div>
 </section>
 
 <section class="py-16 md:py-20 bg-gray-100">
     <div class="container mx-auto px-4">
-        <h2 class="text-2xl md:text-3xl font-bold mb-10 text-center brand-text" id="testimonials-title" data-ar="ماذا قال شركاؤنا؟" data-en="What Our Partners Say">ماذا قال شركاؤنا؟</h2>
+        <h2 class="text-2xl md:text-3xl font-bold mb-10 text-center brand-text" id="testimonials-title" data-ar="ماذا قال شركاؤنا؟" data-en="What Our Partners Say" data-tr="İş Ortaklarımız Ne Diyor?">ماذا قال شركاؤنا؟</h2>
         <div class="grid md:grid-cols-3 gap-8">
             
             <div class="service-card bg-white p-6 rounded-xl shadow-lg border-t-4" style="border-color:var(--brand-blue);">
                 <p class="text-4xl text-gray-300 font-serif mb-2">“</p>
-                <p class="text-gray-700 italic testimonial-text" data-ar="سرعة استجابتهم ودقة المقاسات كانت الأفضل بين جميع الموردين الذين تعاملنا معهم سابقاً. نوصي بهم لأي منشأة طبية تبحث عن جودة حقيقية." data-en="The speed of their response and the precision of sizing were the best among all suppliers we have dealt with. We highly recommend them for any medical facility seeking true quality.">"سرعة استجابتهم ودقة المقاسات كانت الأفضل بين جميع الموردين الذين تعاملنا معهم سابقاً. نوصي بهم لأي منشأة طبية تبحث عن جودة حقيقية."</p>
-                <p class="font-bold mt-4 text-sm brand-text testimonial-name" data-ar="د. سعود العتيبي" data-en="Dr. Saud Al-Otaibi">د. سعود العتيبي</p>
-                <p class="text-xs text-gray-500 testimonial-role" data-ar="مدير المشتريات، مجموعة الأمل الطبية" data-en="Purchasing Manager, Al-Amal Medical Group">مدير المشتريات، مجموعة الأمل الطبية</p>
+                <p class="text-gray-700 italic testimonial-text" data-ar="سرعة استجابتهم ودقة المقاسات كانت الأفضل بين جميع الموردين الذين تعاملنا معهم سابقاً. نوصي بهم لأي منشأة طبية تبحث عن جودة حقيقية." data-en="The speed of their response and the precision of sizing were the best among all suppliers we have dealt with. We highly recommend them for any medical facility seeking true quality." data-tr="Yanıt hızları ve ölçü hassasiyetleri, daha önce çalıştığımız tüm tedarikçiler arasında en iyisiydi. Gerçek kalite arayan tüm sağlık kuruluşlarına tavsiye ederiz.">"سرعة استجابتهم ودقة المقاسات كانت الأفضل بين جميع الموردين الذين تعاملنا معهم سابقاً. نوصي بهم لأي منشأة طبية تبحث عن جودة حقيقية."</p>
+                <p class="font-bold mt-4 text-sm brand-text testimonial-name" data-ar="د. سعود العتيبي" data-en="Dr. Saud Al-Otaibi" data-tr="Dr. Saud Al-Otaibi">د. سعود العتيبي</p>
+                <p class="text-xs text-gray-500 testimonial-role" data-ar="مدير المشتريات، مجموعة الأمل الطبية" data-en="Purchasing Manager, Al-Amal Medical Group" data-tr="Satın Alma Müdürü, Al-Amal Tıbbi Grubu">مدير المشتريات، مجموعة الأمل الطبية</p>
             </div>
-            
             </div>
     </div>
 </section>
 
 <section id="clients" class="py-16 md:py-20">
     <div class="container mx-auto px-4 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold mb-8 brand-text" id="clients-title" data-ar="شركاؤنا في النجاح" data-en="Our Success Partners">شركاؤنا في النجاح</h2>
+        <h2 class="text-2xl md:text-3xl font-bold mb-8 brand-text" id="clients-title" data-ar="شركاؤنا في النجاح" data-en="Our Success Partners" data-tr="Başarı Ortaklarımız">شركاؤنا في النجاح</h2>
 
         <div class="carousel-root mx-auto" id="clientsCarousel">
             <div class="carousel-track">
@@ -356,7 +343,15 @@
                     <img src="https://i.ibb.co/N6tNf1W1/Chat-GPT-Image-Oct-14-2025-03-57-57-PM.png" alt="شعار عميل إضافي 2" class="client-logo" loading="lazy">
                 </div>
                 
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co/BVW7MdvS/Est.jpg" alt="شعار مزايا الحلول / GAYA" class="client-logo" loading="lazy" style="filter: none; opacity: 1;">
+                    <img src="https://i.ibb.co/nqt2H1Xk/image.png" alt="شعار مدارس المشرقية الأهلية" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/bMLxWTpj/image.png" alt="شعار نوبكو - NUPCO" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/0yMn0BQh/2025-10-20-19-45-40-6980ab8f.jpg" alt="أيقونة زي طبي" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/qMQG0196/Chat-GPT-Image-Oct-7-2025-01-19-56-PM.png" alt="شعار عميل إضافي 1" class="client-logo" loading="lazy">
+                    <img src="https://i.ibb.co/N6tNf1W1/Chat-GPT-Image-Oct-14-2025-03-57-57-PM.png" alt="شعار عميل إضافي 2" class="client-logo" loading="lazy">
                 </div>
+            </div>
         </div>
         <div id="clientsDots" class="mt-6 flex items-center justify-center gap-3">
             <button class="dot active" onclick="goTo(0,true)"></button>
@@ -367,61 +362,91 @@
 
 <section id="faq" class="py-16 md:py-20 bg-gray-50">
     <div class="container mx-auto px-4">
-        <h2 class="text-2xl md:text-3xl font-bold mb-10 text-center brand-text" id="faq-title" data-ar="أسئلة شائعة (FAQ)" data-en="Frequently Asked Questions (FAQ)">أسئلة شائعة (FAQ)</h2>
+        <h2 class="text-2xl md:text-3xl font-bold mb-10 text-center brand-text" id="faq-title" data-ar="أسئلة شائعة (FAQ)" data-en="Frequently Asked Questions (FAQ)" data-tr="Sıkça Sorulan Sorular (SSS)">أسئلة شائعة (FAQ)</h2>
         <div class="max-w-3xl mx-auto space-y-4" id="faq-list">
             
             <div class="faq-item">
                 <div class="faq-question flex items-center justify-between">
-                    <span class="font-bold text-gray-800 faq-q" data-ar="ما هو الحد الأدنى لكمية الطلب (MOQ) لديكم؟" data-en="What is your Minimum Order Quantity (MOQ)?">ما هو الحد الأدنى لكمية الطلب (MOQ) لديكم؟</span>
+                    <span class="font-bold text-gray-800 faq-q" data-ar="ما هو الحد الأدنى لكمية الطلب (MOQ) لديكم؟" data-en="What is your Minimum Order Quantity (MOQ)?" data-tr="Minimum Sipariş Miktarı (MOQ) nedir?">ما هو الحد الأدنى لكمية الطلب (MOQ) لديكم؟</span>
                     <svg class="faq-icon w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
                 <div class="faq-answer">
-                    <p class="text-gray-600 faq-a" data-ar="نحن نخدم جميع أحجام الشركات والمؤسسات، ولكن للحصول على أفضل سعر وأسرع توريد، ننصح بأن لا يقل الطلب عن 50 قطعة موحدة من الصنف الواحد. يمكنك دائماً التواصل معنا لمناقشة طلبات الكميات الصغيرة." data-en="We serve businesses of all sizes, but for the best pricing and fastest delivery, we recommend an order quantity of no less than 50 uniform pieces per item. You can always contact us to discuss smaller orders.">نحن نخدم جميع أحجام الشركات والمؤسسات، ولكن للحصول على أفضل سعر وأسرع توريد، ننصح بأن لا يقل الطلب عن **50 قطعة** موحدة من الصنف الواحد. يمكنك دائماً التواصل معنا لمناقشة طلبات الكميات الصغيرة.</p>
+                    <p class="text-gray-600 faq-a" data-ar="نحن نخدم جميع أحجام الشركات والمؤسسات، ولكن للحصول على أفضل سعر وأسرع توريد، ننصح بأن لا يقل الطلب عن 50 قطعة موحدة من الصنف الواحد. يمكنك دائماً التواصل معنا لمناقشة طلبات الكميات الصغيرة." data-en="We serve businesses of all sizes, but for the best pricing and fastest delivery, we recommend an order quantity of no less than 50 uniform pieces per item. You can always contact us to discuss smaller orders." data-tr="Her büyüklükteki şirkete hizmet vermekteyiz, ancak en iyi fiyatlandırma ve en hızlı tedarik için, sipariş miktarının ürün başına 50 üniforma parçasından az olmamasını öneriyoruz. Daha küçük siparişleri görüşmek için her zaman bizimle iletişime geçebilirsiniz.">نحن نخدم جميع أحجام الشركات والمؤسسات، ولكن للحصول على أفضل سعر وأسرع توريد، ننصح بأن لا يقل الطلب عن **50 قطعة** موحدة من الصنف الواحد. يمكنك دائماً التواصل معنا لمناقشة طلبات الكميات الصغيرة.</p>
                 </div>
             </div>
             
+            <div class="faq-item">
+                <div class="faq-question flex items-center justify-between">
+                    <span class="font-bold text-gray-800 faq-q" data-ar="هل تشمل خدماتكم جميع مناطق المملكة؟" data-en="Do your services cover all regions in KSA?" data-tr="Hizmetleriniz KSA'nın tüm bölgelerini kapsıyor mu?">هل تشمل خدماتكم جميع مناطق المملكة؟</span>
+                    <svg class="faq-icon w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-600 faq-a" data-ar="نعم، خدمات التوريد والتوصيل لدينا تغطي جميع مدن ومناطق المملكة العربية السعودية، بما في ذلك المناطق النائية، وذلك بالتعاون مع شبكة من شركات الشحن والخدمات اللوجستية الموثوقة لضمان وصول شحناتك بأمان وفي الموعد." data-en="Yes, our supply and delivery services cover all cities and regions in Saudi Arabia, including remote areas, in cooperation with a reliable network of shipping and logistics companies to ensure your shipments arrive safely and on time." data-tr="Evet, tedarik ve teslimat hizmetlerimiz, güvenilir nakliye ve lojistik şirketleriyle işbirliği içinde, Krallık'taki tüm şehirleri ve bölgeleri (uzak bölgeler dahil) kapsar ve gönderilerinizin güvenli ve zamanında ulaşmasını sağlar.">نعم، خدمات التوريد والتوصيل لدينا تغطي جميع مدن ومناطق المملكة العربية السعودية، بما في ذلك المناطق النائية، وذلك بالتعاون مع شبكة من شركات الشحن والخدمات اللوجستية الموثوقة لضمان وصول شحناتك بأمان وفي الموعد.</p>
+                </div>
             </div>
+
+            <div class="faq-item">
+                <div class="faq-question flex items-center justify-between">
+                    <span class="font-bold text-gray-800 faq-q" data-ar="هل هناك ضمان على جودة الأقمشة ومتانة الزي؟" data-en="Is there a warranty on fabric quality and uniform durability?" data-tr="Kumaş kalitesi ve üniforma dayanıklılığı garantili mi?">هل هناك ضمان على جودة الأقمشة ومتانة الزي؟</span>
+                    <svg class="faq-icon w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-600 faq-a" data-ar="نحن ملتزمون بأعلى معايير الجودة، ونستخدم أقمشة معتمدة تحمل شهادات دولية. نقدم ضماناً على الأقمشة والتفصيل ضد عيوب الصناعة أو مشكلات التطريز/الطباعة. هدفنا هو متانة الزي ليدوم لسنوات عمل متتالية." data-en="We are committed to the highest quality standards and use certified fabrics with international certifications. We offer a warranty on fabrics and tailoring against manufacturing defects or printing/embroidery issues. Our goal is for the uniform to last for consecutive working years." data-tr="En yüksek kalite standartlarına bağlıyız ve uluslararası sertifikalı kumaşlar kullanıyoruz. Kumaş ve terzilik için üretim hatalarına veya baskı/nakış sorunlarına karşı garanti veriyoruz. Amacımız, üniformanın arka arkaya çalışma yılları boyunca dayanmasıdır.">نحن ملتزمون بأعلى معايير الجودة، ونستخدم أقمشة معتمدة تحمل شهادات دولية. نقدم ضماناً على الأقمشة والتفصيل ضد عيوب الصناعة أو مشكلات التطريز/الطباعة. هدفنا هو متانة الزي ليدوم لسنوات عمل متتالية.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question flex items-center justify-between">
+                    <span class="font-bold text-gray-800 faq-q" data-ar="هل يمكننا تعديل التصميمات الحالية أو طلب تصميمات خاصة؟" data-en="Can we modify existing designs or request custom designs?" data-tr="Mevcut tasarımları değiştirebilir veya özel tasarımlar talep edebilir miyiz?">هل يمكننا تعديل التصميمات الحالية أو طلب تصميمات خاصة؟</span>
+                    <svg class="faq-icon w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-600 faq-a" data-ar="بالتأكيد. لدينا فريق تصميم داخلي متخصص يعمل معك خطوة بخطوة، بدءًا من عينات الأقمشة والمقاسات القياسية وصولاً إلى التعديل والتخصيص الكامل للزي ليناسب هوية علامتك التجارية ومتطلبات العمل المحددة." data-en="Absolutely. We have a dedicated in-house design team that works with you step-by-step, from fabric samples and standard sizing to complete modification and customization of the uniform to match your brand identity and specific work requirements." data-tr="Kesinlikle. Marka kimliğinize ve özel iş gereksinimlerinize uygun üniforma için kumaş örnekleri ve standart ölçülendirmeden başlayarak, tam modifikasyon ve kişiselleştirmeye kadar sizinle adım adım çalışan özel bir tasarım ekibimiz var.">بالتأكيد. لدينا فريق تصميم داخلي متخصص يعمل معك خطوة بخطوة، بدءًا من عينات الأقمشة والمقاسات القياسية وصولاً إلى التعديل والتخصيص الكامل للزي ليناسب هوية علامتك التجارية ومتطلبات العمل المحددة.</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 
 <section id="contact" class="py-16 md:py-20 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-gray-100">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-center brand-text" id="contact-form-title" data-ar="نموذج طلب عرض سعر" data-en="Request a Quote Form">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-center brand-text" id="contact-form-title" data-ar="نموذج طلب عرض سعر" data-en="Request a Quote Form" data-tr="Fiyat Teklifi Formu">
                 نموذج طلب عرض سعر
             </h2>
-            <p class="text-gray-600 mb-8 text-center max-w-2xl mx-auto" id="contact-form-subtitle" data-ar="يرجى ملء النموذج أدناه بدقة لتمكين فريق المبيعات من تجهيز عرض سعر مُفصَّل ومناسب لاحتياجات منشأتكم." data-en="Please fill out the form below accurately to enable our sales team to prepare a detailed and tailored price quote for your establishment's needs.">
+            <p class="text-gray-600 mb-8 text-center max-w-2xl mx-auto" id="contact-form-subtitle" data-ar="يرجى ملء النموذج أدناه بدقة لتمكين فريق المبيعات من تجهيز عرض سعر مُفصَّل ومناسب لاحتياجات منشأتكم." data-en="Please fill out the form below accurately to enable our sales team to prepare a detailed and tailored price quote for your establishment's needs." data-tr="Satış ekibimizin kuruluşunuzun ihtiyaçlarına uygun, ayrıntılı ve özel bir fiyat teklifi hazırlayabilmesi için lütfen aşağıdaki formu doğru bir şekilde doldurun.">
                 يرجى ملء النموذج أدناه بدقة لتمكين فريق المبيعات من تجهيز عرض سعر مُفصَّل ومناسب لاحتياجات منشأتكم.
             </p>
 
             <form action="https://formspree.io/f/xanpkdej" method="POST" class="space-y-6">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label for="company_name" class="block text-sm font-medium text-gray-700 form-label" data-ar="اسم الشركة/المنشأة" data-en="Company/Establishment Name">اسم الشركة/المنشأة <span class="text-red-500">*</span></label>
+                        <label for="company_name" class="block text-sm font-medium text-gray-700 form-label" data-ar="اسم الشركة/المنشأة" data-en="Company/Establishment Name" data-tr="Şirket/Kuruluş Adı">اسم الشركة/المنشأة <span class="text-red-500">*</span></label>
                         <input type="text" id="company_name" name="اسم_الشركة" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     </div>
 
                 <div class="pt-4">
-                    <button type="submit" class="w-full inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-lg font-bold rounded-lg text-white btn-primary form-submit-btn" data-ar="أرسل طلب عرض السعر" data-en="Submit Request for Quote">
+                    <button type="submit" class="w-full inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-lg font-bold rounded-lg text-white btn-primary form-submit-btn" data-ar="أرسل طلب عرض السعر" data-en="Submit Request for Quote" data-tr="Teklif Talebini Gönder">
                         أرسل طلب عرض السعر
                     </button>
                 </div>
 
-                <p class="text-xs text-gray-500 text-center mt-3 form-note" data-ar="* حقول مطلوبة. سنقوم بالرد عليك خلال 24 ساعة عمل." data-en="* Required fields. We will respond within 24 working hours.">
+                <p class="text-xs text-gray-500 text-center mt-3 form-note" data-ar="* حقول مطلوبة. سنقوم بالرد عليك خلال 24 ساعة عمل." data-en="* Required fields. We will respond within 24 working hours." data-tr="* Zorunlu alanlar. 24 çalışma saati içinde size geri dönüş yapacağız.">
                     <span class="text-red-500">*</span> حقول مطلوبة. سنقوم بالرد عليك خلال 24 ساعة عمل.
                 </p>
 
             </form>
 
              <div class="mt-10 pt-6 border-t border-gray-200 text-center">
-                <h3 class="text-lg font-bold mb-3 brand-text" id="contact-other-title" data-ar="للتواصل المباشر والاستفسارات" data-en="For Direct Contact & Inquiries">للتواصل المباشر والاستفسارات</h3>
+                <h3 class="text-lg font-bold mb-3 brand-text" id="contact-other-title" data-ar="للتواصل المباشر والاستفسارات" data-en="For Direct Contact & Inquiries" data-tr="Doğrudan İletişim ve Sorularınız İçin">للتواصل المباشر والاستفسارات</h3>
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-4 text-gray-700">
-                    <a href="mailto:info@nefpus.sa" class="hover:text-blue-700 transition contact-detail-link" data-ar="الإيميل" data-en="Email">
+                    <a href="mailto:info@nefpus.sa" class="hover:text-blue-700 transition contact-detail-link" data-ar="الإيميل" data-en="Email" data-tr="E-posta">
                         <strong class="font-bold">الإيميل:</strong> info@nefpus.sa
                     </a>
                     <span class="hidden sm:inline">|</span>
-                    <a href="tel:+966590992632" class="hover:text-blue-700 transition contact-detail-link" style="direction: ltr;" data-ar="الهاتف المباشر" data-en="Direct Phone">
+                    <a href="tel:+966590992632" class="hover:text-blue-700 transition contact-detail-link" style="direction: ltr;" data-ar="الهاتف المباشر" data-en="Direct Phone" data-tr="Doğrudan Telefon">
                         <strong style="direction: rtl; display: inline-block;">الهاتف المباشر:</strong>
                         <span style="direction: ltr; display: inline-block;">+966 59 099 2632</span>
                     </a>
@@ -440,94 +465,78 @@
 </footer>
 
 <script>
-    const AR_TEXT = {
-        'page-title': 'NEFPUS | المؤسسة الوطنية لتوريد وتجهيز الزي المهني',
-        'hero-title': 'زي مهني عالي الجودة<br/> توريد سريع ومخصص لقطاعك',
-        'hero-subtitle': 'تخصصنا في توريد وتصنيع الزي المهني للمستشفيات، المدارس، والمصانع في السعودية، مع ضمان الجودة والتسليم في الموعد.',
-        'about-title': 'من نحن',
-        'about-content': 'NEFPUS — المؤسسة الوطنية لتوريد وتجهيز الزي المهني. نقدم حلولًا متكاملة تشمل دراسة الاحتياج، التصميم، اختيار الأقمشة، التصنيع، التفصيل، الطباعة والتطريز، ثم التغليف والتوصيل، مع التزام كامل بمعايير الجودة والمواعيد. هدفنا هو تمثيل هويتكم المهنية بأفضل شكل.',
-        'services-title': 'ما نقدمه لنجاح هويتكم',
-        'gallery-title': 'القطاعات التي نخدمها بشغف',
-        'testimonials-title': 'ماذا قال شركاؤنا؟',
-        'clients-title': 'شركاؤنا في النجاح',
-        'faq-title': 'أسئلة شائعة (FAQ)',
-        'contact-form-title': 'نموذج طلب عرض سعر',
-        'contact-form-subtitle': 'يرجى ملء النموذج أدناه بدقة لتمكين فريق المبيعات من تجهيز عرض سعر مُفصَّل ومناسب لاحتياجات منشأتكم.',
-        'contact-other-title': 'للتواصل المباشر والاستفسارات',
-        'footer-copy-ar': '© {year} NEFPUS — جميع الحقوق محفوظة',
-        'footer-copy-en': 'National Establishment for Professional Uniform Supply',
+    // النصوص المترجمة (للاستخدام داخل الدوال)
+    const LANG_MAP = {
+        'ar': { code: 'ar', name: 'العربية', dir: 'rtl' },
+        'en': { code: 'en', name: 'English', dir: 'ltr' },
+        'tr': { code: 'tr', name: 'Türkçe', dir: 'ltr' },
     };
-
-    const EN_TEXT = {
-        'page-title': 'NEFPUS | National Professional Uniform Supply',
-        'hero-title': 'High-Quality Professional Uniforms<br/> Fast & Custom Supply for Your Sector',
-        'hero-subtitle': 'Specialized in supplying and manufacturing professional uniforms for hospitals, schools, and factories in Saudi Arabia, guaranteed quality and on-time delivery.',
-        'about-title': 'About Us',
-        'about-content': 'NEFPUS — National Establishment for Professional Uniform Supply. We provide integrated solutions including needs assessment, design, fabric selection, manufacturing, tailoring, printing, embroidery, packaging, and delivery, with full commitment to quality standards and deadlines. Our goal is to professionally represent your brand identity.',
-        'services-title': 'What We Offer for Your Success',
-        'gallery-title': 'Sectors We Serve with Passion',
-        'testimonials-title': 'What Our Partners Say',
-        'clients-title': 'Our Success Partners',
-        'faq-title': 'Frequently Asked Questions (FAQ)',
-        'contact-form-title': 'Request a Quote Form',
-        'contact-form-subtitle': 'Please fill out the form below accurately to enable our sales team to prepare a detailed and tailored price quote for your establishment\'s needs.',
-        'contact-other-title': 'For Direct Contact & Inquiries',
-        'footer-copy-ar': '© {year} NEFPUS — All Rights Reserved',
-        'footer-copy-en': 'National Establishment for Professional Uniform Supply',
-    };
-
+    
     function updateContent(lang) {
-        const data = (lang === 'ar' ? AR_TEXT : EN_TEXT);
-        document.documentElement.dir = (lang === 'ar' ? 'rtl' : 'ltr');
+        const langData = LANG_MAP[lang];
+        document.documentElement.dir = langData.dir;
         
-        // تحديث النصوص الرئيسية وعناوين الأقسام
-        document.getElementById('page-title').innerText = data['page-title'];
-        document.getElementById('hero-title').innerHTML = data['hero-title'];
-        document.getElementById('hero-subtitle').innerText = data['hero-subtitle'];
-        document.getElementById('about-title').innerText = data['about-title'];
-        document.getElementById('about-content').innerText = data['about-content'];
-        document.getElementById('services-title').innerText = data['services-title'];
-        document.getElementById('gallery-title').innerText = data['gallery-title'];
-        document.getElementById('testimonials-title').innerText = data['testimonials-title'];
-        document.getElementById('clients-title').innerText = data['clients-title'];
-        document.getElementById('faq-title').innerText = data['faq-title'];
-        document.getElementById('contact-form-title').innerText = data['contact-form-title'];
-        document.getElementById('contact-form-subtitle').innerText = data['contact-form-subtitle'];
-        document.getElementById('contact-other-title').innerText = data['contact-other-title'];
-
-        // تحديث العناصر التي تحمل سمات data-ar/data-en
+        // تحديث جميع العناصر التي تحمل سمات البيانات (data-ar/en/tr)
         document.querySelectorAll('[data-ar]').forEach(el => {
-            const arText = el.getAttribute('data-ar');
-            const enText = el.getAttribute('data-en');
-            if (el.tagName === 'A' || el.tagName === 'BUTTON' || el.tagName === 'H3' || el.tagName === 'SPAN') {
-                el.innerText = (lang === 'ar' ? arText : enText);
+            const text = el.getAttribute('data-' + lang) || el.getAttribute('data-ar');
+            
+            // تحديث النصوص (مع استثناءات للحقول التي تستخدم 'placeholder')
+            if (el.tagName === 'A' || el.tagName === 'BUTTON' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'SPAN' || el.tagName === 'P' || el.tagName === 'LABEL' || el.tagName === 'STRONG') {
+                el.innerText = text;
+            }
+            
+            // تحديث الـ Select Options (محتوى النص)
+            if (el.tagName === 'OPTION') {
+                el.innerText = text;
+            }
+
+            // تحديث الـ placeholders (للتوجيه في النموذج)
+            if (el.placeholder) {
+                // قد تحتاج هذه العناصر إلى تحديث يدوي إذا كان النص الإنجليزي/التركي يختلف عن Placeholder العربي
             }
         });
         
-        // تحديث النصوص التفصيلية (وصف الخدمات)
-        document.querySelectorAll('.service-heading').forEach(el => {
-            el.innerText = (lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en'));
-        });
-        document.querySelectorAll('.service-desc').forEach(el => {
-            el.innerText = (lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en'));
-        });
+        // تحديث النصوص التي تحتاج إلى معالجة خاصة (مثل الأقسام الرئيسية)
+        document.getElementById('page-title').innerText = document.getElementById('page-title').getAttribute('data-' + lang);
+        document.getElementById('hero-title').innerHTML = document.getElementById('hero-title').getAttribute('data-' + lang);
+        document.getElementById('hero-subtitle').innerText = document.getElementById('hero-subtitle').getAttribute('data-' + lang);
+
+        // تحديث زر اللغة الحالي
+        document.getElementById('current-lang-text').innerText = langData.name;
+        
         // تحديث الفوتر
+        const arFooter = document.getElementById('footer-copy-ar');
+        const enFooter = document.getElementById('footer-copy-en');
         const currentYear = new Date().getFullYear();
-        document.getElementById('footer-copy-ar').innerHTML = (lang === 'ar' ? data['footer-copy-ar'] : data['footer-copy-en']).replace('{year}', currentYear);
-        document.getElementById('footer-copy-en').innerHTML = (lang === 'ar' ? data['footer-copy-en'] : data['footer-copy-ar']).replace('{year}', currentYear);
-
-
-        // تحديث زر التبديل
-        document.getElementById('lang-toggle').innerText = (lang === 'ar' ? 'EN' : 'AR');
+        
+        if (lang === 'ar') {
+             arFooter.innerHTML = arFooter.getAttribute('data-ar').replace('{year}', currentYear);
+             enFooter.innerHTML = enFooter.getAttribute('data-en');
+        } else {
+             arFooter.innerHTML = arFooter.getAttribute('data-en').replace('{year}', currentYear);
+             enFooter.innerHTML = arFooter.getAttribute('data-ar'); // عرض الاسم العربي للمؤسسة في كلتا اللغتين
+        }
+       
         localStorage.setItem('lang', lang);
     }
 
-    function switchLanguage() {
-        const currentLang = document.documentElement.dir === 'rtl' ? 'ar' : 'en';
-        const newLang = currentLang === 'ar' ? 'en' : 'ar';
-        updateContent(newLang);
+    function toggleDropdown() {
+        const menu = document.getElementById('lang-dropdown-menu');
+        const arrow = document.getElementById('dropdown-arrow');
+        menu.classList.toggle('hidden');
+        arrow.classList.toggle('rotate');
+    }
+
+    function closeDropdown() {
+        document.getElementById('lang-dropdown-menu').classList.add('hidden');
+        document.getElementById('dropdown-arrow').classList.remove('rotate');
+    }
+
+    function selectLanguage(langCode) {
+        updateContent(langCode);
     }
     
+    // (دوال الكاروسيل وباقي JavaScript...)
     function goTo(i, user=false){
         const root = document.getElementById('clientsCarousel');
         if (!root) return;
@@ -535,9 +544,7 @@
         const dots = Array.from(document.getElementById('clientsDots').children);
         
         const index = (i + 2) % 2; 
-        
         track.style.transform = `translateX(-${i*100}%)`; 
-        
         dots.forEach((d,di)=>d.classList.toggle('active', di===index));
         if(user) restart();
     }
@@ -590,6 +597,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // مُستمع لزر القائمة
     mobileMenuBtn.addEventListener('click', () => {
+        hideMobileNav(); // إغلاق القائمة المنسدلة للغة
         mobileNav.classList.toggle('hidden');
     });
 
@@ -598,6 +606,15 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', hideMobileNav);
     });
     
+    // إغلاق القائمة المنسدلة عند النقر خارجها
+    document.addEventListener('click', (event) => {
+        const dropdown = document.getElementById('lang-dropdown-menu');
+        const button = document.getElementById('lang-toggle-button');
+        if (dropdown && button && !dropdown.contains(event.target) && !button.contains(event.target)) {
+            closeDropdown();
+        }
+    });
+
     // بدء تشغيل الكاروسيل وتفاعل الماوس
     const root = document.getElementById('clientsCarousel');
     if (root) {
